@@ -32,8 +32,7 @@ DD_belatedPNG.fix('.flash_bar,#tit_fc1,#tit_fc2,#tit_fc3,#tit_fc4,#flashLine,.pn
 
 		<!--Announced by Visual SiteBuilder 9-->
 		<!-- CustomerNO:77656262657232307b7647545251574103070000 -->
-		<link rel="stylesheet" type="text/css" href="../list.vsb.css" />
-		<script type="text/javascript" src="/system/resource/js/counter.js"></script>
+		<script type="text/javascript" src="system/resource/js/counter.js"></script>
 		<script type="text/javascript">
 			_jsq_(1021, '/list.jsp', -1, 1358721784)
 		</script>
@@ -196,8 +195,8 @@ DD_belatedPNG.fix('.flash_bar,#tit_fc1,#tit_fc2,#tit_fc3,#tit_fc4,#flashLine,.pn
 								<li style="float: left"><input class="anniu png" type="submit" value="&nbsp;" style="cursor: pointer" /></li>
 							</ul>
 						</form>
-						<script language="javascript" src="/system/resource/js/base64.js"></script>
-						<script language="javascript" src="/system/resource/js/formfunc.js"></script>
+						<script language="javascript" src="system/resource/js/base64.js"></script>
+						<script language="javascript" src="system/resource/js/formfunc.js"></script>
 						<!--#endeditable-->
 					</div>
 					<div class="smleftimfserv">
@@ -229,7 +228,7 @@ DD_belatedPNG.fix('.flash_bar,#tit_fc1,#tit_fc2,#tit_fc3,#tit_fc4,#flashLine,.pn
 						<div class="newslist">
 							<!--#begineditable name="静态翻页列表" action="webber.wbst.com.news.ColumnNews" layout="/system/_component/news/list/stattplpagedownv2.jsp" tpltype="1" contype="news" clone="" viewid="136240" contentviewid="" tagname="静态翻页列表"-->
 
-							<script language="javascript" src="/system/resource/js/news/statpagedown.js"></script>
+							<script language="javascript" src="system/resource/js/news/statpagedown.js"></script>
 							<ul>
 								<li id="line_u11_0">
 									<A title="关于上报2017-2018-1学期实习实践课程材料的通知" target="_blank" href="../info/1021/5417.htm"><span class="newslistatime">2018-03-20</span><span style="float:left;">关于上报2017-2018-1学期实习实践课程材料的通知</span></A>
@@ -408,7 +407,7 @@ DD_belatedPNG.fix('.flash_bar,#tit_fc1,#tit_fc2,#tit_fc3,#tit_fc4,#flashLine,.pn
 										line-height: 14px;
 									}
 								</style>
-								<script language="javascript" src="/system/resource/js/gotopage.js"></script>
+								<script language="javascript" src="system/resource/js/gotopage.js"></script>
 								<script type="text/javascript">
 									function a136240_gopage_fun() {
 										_simple_list_gotopage_fun(1, 'a136240GOPAGE', 2)
