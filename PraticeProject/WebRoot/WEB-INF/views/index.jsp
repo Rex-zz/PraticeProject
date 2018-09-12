@@ -62,7 +62,8 @@ DD_belatedPNG.fix('.flash_bar,#tit_fc1,#tit_fc2,#tit_fc3,#tit_fc4,#flashLine,.pn
 							<!--#begineditable name="网站导航" action="" layout="" tpltype="" contype="" clone="" viewid="136193" contentviewid="" tagname="网站导航"-->
 							<li >
 								<a onmouseover="mopen('m1036')" onmouseout="mclosetime()" href="http://jxzx.wzu.edu.cn/">
-								当前登陆:<s:property value="#session.user.name"/></a>
+								当前登陆:<s:if test="#session.identity==2">管理员：</s:if>
+								<s:property value="#session.user.name"/></a>
 							</li>
 							<li>
 								<a onmouseover="mopen('m1037')" onmouseout="mclosetime()" href="../gzzd.htm">个人中心</a>
@@ -97,64 +98,29 @@ DD_belatedPNG.fix('.flash_bar,#tit_fc1,#tit_fc2,#tit_fc3,#tit_fc4,#flashLine,.pn
 							<ul>
 								<!--#begineditable name="网站导航-左侧二级" action="" layout="" tpltype="" contype="" clone="" viewid="136230" contentviewid="" tagname="网站导航-左侧二级"-->
 								<li>
-									<a href="sxjx.htm" title="实习见习">实习见习</a>
+									<a href="sxjx.htm" title="实习见习">查看通知</a>
 								</li>
+								<s:if test="#session.identity==2">
+									<li><a href="#" >发布通知</a></li>
+									<li><a href="#" >查看信息</a></li>
+									<li><a href="#" >抽查记录</a></li>
+									<li><a href="#" >导入信息</a></li>
+									<li><a href="#" >导出信息</a></li>
+								</s:if>
+								<s:elseif test="#session.identity==1">
+									<li><a href="#" >查看学生</a></li>
+									<li><a href="#" >填写联系表</a></li>
+									<li><a href="#" >成绩填写</a></li>
+									<li><a href="#" >实习总结</a></li>
+								</s:elseif>
+								<s:elseif test="#session.identity==0">
+									<li><a href="#" >意向调查表</a></li>
+									<li><a href="#" >岗位信息表</a></li>
+									<li><a href="#" >日记</a></li>
+									<li><a href="#" >实习报告</a></li>
+									<li><a href="#" >实习总结</a></li>
+								</s:elseif>
 
-								<li>
-									<a href="jsjn.htm" title="教师技能">教师技能</a>
-								</li>
-
-								<li>
-									<a href="bylw_sj_.htm" title="毕业论文（设计）">毕业论文（设计）</a>
-								</li>
-
-								<li>
-									<a href="xkjs.htm" title="学科竞赛">学科竞赛</a>
-								</li>
-
-								<li>
-									<a href="kwxf.htm" title="课外学分">课外学分</a>
-								</li>
-
-								<li>
-									<a href="dc_syskfxm.htm" title="大创、实验室开放项目">大创、实验室开放项目</a>
-								</li>
-
-								<li>
-									<a href="xjgl.htm" title="学籍管理">学籍管理</a>
-								</li>
-
-								<li>
-									<a href="xlxw.htm" title="学历学位">学历学位</a>
-								</li>
-
-								<li>
-									<a href="pkxk.htm" title="排课选课">排课选课</a>
-								</li>
-
-								<li>
-									<a href="kcks.htm" title="课程考试">课程考试</a>
-								</li>
-
-								<li>
-									<a href="zxgl.htm" title="重修管理">重修管理</a>
-								</li>
-
-								<li>
-									<a href="djks.htm" title="等级考试">等级考试</a>
-								</li>
-
-								<li>
-									<a href="cjgl.htm" title="成绩管理">成绩管理</a>
-								</li>
-
-								<li>
-									<a href="fxszy.htm" title="辅修双专业">辅修双专业</a>
-								</li>
-
-								<li>
-									<a href="qt.htm" title="其它">其它</a>
-								</li>
 
 								<!--#endeditable-->
 							</ul>

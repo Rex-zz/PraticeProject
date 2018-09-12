@@ -2,8 +2,6 @@ package com.pratice.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -12,17 +10,16 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "teacher", catalog = "pratice")
-
 public class Teacher implements java.io.Serializable {
 
 	// Fields
 
-	private String TId;
-	private String TName;
-	private String TTel;
-	private String TMajor;
-	private Integer TStunum;
-	private String TPassword;
+	private String Id;
+	private String Name;
+	private String Tel;
+	private String Major;
+	private Integer Stunum;
+	private String Password;
 
 	// Constructors
 
@@ -32,82 +29,76 @@ public class Teacher implements java.io.Serializable {
 
 	/** minimal constructor */
 	public Teacher(String TName, String TTel, String TMajor, String TPassword) {
-		this.TName = TName;
-		this.TTel = TTel;
-		this.TMajor = TMajor;
-		this.TPassword = TPassword;
+		this.Name = TName;
+		this.Tel = TTel;
+		this.Major = TMajor;
+		this.Password = TPassword;
 	}
 
 	/** full constructor */
-	public Teacher(String TName, String TTel, String TMajor, Integer TStunum, String TPassword) {
-		this.TName = TName;
-		this.TTel = TTel;
-		this.TMajor = TMajor;
-		this.TStunum = TStunum;
-		this.TPassword = TPassword;
+	public Teacher(String TName, String TTel, String TMajor, Integer TStunum,
+			String TPassword) {
+		this.Name = TName;
+		this.Tel = TTel;
+		this.Major = TMajor;
+		this.Stunum = TStunum;
+		this.Password = TPassword;
 	}
 
 	// Property accessors
 	@Id
-
 	@Column(name = "t_id", unique = true, nullable = false, length = 45)
-
-	public String getTId() {
-		return this.TId;
+	public String getId() {
+		return this.Id;
 	}
 
-	public void setTId(String TId) {
-		this.TId = TId;
+	public void setId(String TId) {
+		this.Id = TId;
 	}
 
 	@Column(name = "t_name", nullable = false, length = 45)
-
-	public String getTName() {
-		return this.TName;
+	public String getName() {
+		return this.Name;
 	}
 
-	public void setTName(String TName) {
-		this.TName = TName;
+	public void setName(String TName) {
+		this.Name = TName;
 	}
 
 	@Column(name = "t_tel", nullable = false, length = 45)
-
-	public String getTTel() {
-		return this.TTel;
+	public String getTel() {
+		return this.Tel;
 	}
 
-	public void setTTel(String TTel) {
-		this.TTel = TTel;
+	public void setTel(String TTel) {
+		this.Tel = TTel;
 	}
 
 	@Column(name = "t_major", nullable = false, length = 45)
-
-	public String getTMajor() {
-		return this.TMajor;
+	public String getMajor() {
+		return this.Major;
 	}
 
-	public void setTMajor(String TMajor) {
-		this.TMajor = TMajor;
+	public void setMajor(String TMajor) {
+		this.Major = TMajor;
 	}
 
 	@Column(name = "t_stunum")
-
-	public Integer getTStunum() {
-		return this.TStunum;
+	public Integer getStunum() {
+		return this.Stunum;
 	}
 
-	public void setTStunum(Integer TStunum) {
-		this.TStunum = TStunum;
+	public void setStunum(Integer TStunum) {
+		this.Stunum = TStunum;
 	}
 
 	@Column(name = "t_password", nullable = false, length = 45)
-
-	public String getTPassword() {
-		return this.TPassword;
+	public String getPassword() {
+		return this.Password;
 	}
 
-	public void setTPassword(String TPassword) {
-		this.TPassword = TPassword;
+	public void setPassword(String TPassword) {
+		this.Password = TPassword;
 	}
 
 }
