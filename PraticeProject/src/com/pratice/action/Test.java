@@ -23,9 +23,9 @@ public class Test extends ActionSupport {
 
 	public String test(){
 		System.out.println("helloword");
-		Session session = sessionFactory.openSession();
-		session.save(new Institute(institute));
-		session.close();
+//		Session session = sessionFactory.openSession();
+//		session.save(new Institute(institute));
+//		session.close();
 		return SUCCESS;
 	}
 }
