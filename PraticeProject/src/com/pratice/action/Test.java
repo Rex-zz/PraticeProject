@@ -8,24 +8,16 @@ import org.springframework.stereotype.Controller;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.pratice.entity.Institute;
+import com.pratice.entity.Student;
+import com.pratice.service.StudentService;
 @Controller
 @Scope(value="prototype")
 public class Test extends ActionSupport {
 
-	
 	@Autowired
-	private SessionFactory sessionFactory;
-	private String institute;
-	
-	public void setInstitute(String institute) {
-		this.institute = institute;
-	}
-
+	private StudentService studentService;
 	public String test(){
-		System.out.println("helloword");
-//		Session session = sessionFactory.openSession();
-//		session.save(new Institute(institute));
-//		session.close();
+		studentService.saveEntity(new Student("15211160231","小王", "男", "123", "716203", "计算机", "2班", "王梦龙"));
 		return SUCCESS;
 	}
 }

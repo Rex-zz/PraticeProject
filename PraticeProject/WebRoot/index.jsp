@@ -22,9 +22,5 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
     <a href="helloword.action">test</a>
-    <form action="helloword.action" method="post">
-    	学院:<input type="text" name="institute">
-    	<input type="submit" value="插入">
-    </form>
   </body>
 </html>

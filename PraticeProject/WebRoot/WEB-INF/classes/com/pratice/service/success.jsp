@@ -23,6 +23,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    成功添加 <br>
+   	当前用户:${sessionScope.user.name }
   </body>
 </html>

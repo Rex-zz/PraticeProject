@@ -8,5 +8,5 @@ function _jsq_(treeid, pagename, newsid, owner)
     var c = navigator.appName=='Netscape'?screen.pixelDepth:screen.colorDepth;
     var e = new _jsq_encode();
     var r = '&e=1&w='+screen.width + '&h='+ screen.height+'&treeid='+treeid+'&refer='+e.encode(document.referrer)+ '&pagename='+e.encode(pagename)+'&newsid='+newsid;
-    _jsq_image.src = "/system/resource/code/datainput.jsp?owner="+owner+ r;
+    _jsq_image.src = "system/resource/code/datainput.jsp?owner="+owner+ r;
 }
