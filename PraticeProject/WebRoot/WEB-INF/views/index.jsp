@@ -42,8 +42,7 @@ DD_belatedPNG.fix('.flash_bar,#tit_fc1,#tit_fc2,#tit_fc3,#tit_fc4,#flashLine,.pn
   </head>
   
   <body>
-    
-		<!--头部-->
+    <!--头部-->
 
 		<div class="Headout">
 			<div class="Header">
@@ -99,15 +98,15 @@ DD_belatedPNG.fix('.flash_bar,#tit_fc1,#tit_fc2,#tit_fc3,#tit_fc4,#flashLine,.pn
 							<ul>
 								<!--#begineditable name="网站导航-左侧二级" action="" layout="" tpltype="" contype="" clone="" viewid="136230" contentviewid="" tagname="网站导航-左侧二级"-->
 								<li>
-									<a href="#" title="实习见习">全部通知</a>
+									<a href="sxjx.htm" title="实习见习">实习见习</a>
 								</li>
 
 								<li>
-									<a href="#" title="教师技能">私人通知</a>
+									<a href="jsjn.htm" title="教师技能">教师技能</a>
 								</li>
-								
+
 								<li>
-									<a href="#" title="毕业论文（设计）">毕业论文（设计）</a>
+									<a href="bylw_sj_.htm" title="毕业论文（设计）">毕业论文（设计）</a>
 								</li>
 
 								<li>
@@ -197,8 +196,8 @@ DD_belatedPNG.fix('.flash_bar,#tit_fc1,#tit_fc2,#tit_fc3,#tit_fc4,#flashLine,.pn
 								<li style="float: left"><input class="anniu png" type="submit" value="&nbsp;" style="cursor: pointer" /></li>
 							</ul>
 						</form>
-						<script language="javascript" src="system/resource/js/base64.js"></script>
-						<script language="javascript" src="system/resource/js/formfunc.js"></script>
+						<script language="javascript" src="/system/resource/js/base64.js"></script>
+						<script language="javascript" src="/system/resource/js/formfunc.js"></script>
 						<!--#endeditable-->
 					</div>
 					<div class="smleftimfserv">
@@ -207,7 +206,7 @@ DD_belatedPNG.fix('.flash_bar,#tit_fc1,#tit_fc2,#tit_fc3,#tit_fc4,#flashLine,.pn
 						<a target="_blank" href="../index/xxfw/wzdxkb.htm">&nbsp;</a>
 						<a target="_blank" href="../index/xxfw/xl_zxsj.htm">&nbsp;</a>
 						<a target="_blank" href="../index/cx.htm">&nbsp;</a>
-						<!--#endeditable--a>
+						<!--#endeditable-->
 					</div>
 				</div>
 				<div class="submainright">
@@ -226,11 +225,12 @@ DD_belatedPNG.fix('.flash_bar,#tit_fc1,#tit_fc2,#tit_fc3,#tit_fc4,#flashLine,.pn
 							<!--#endeditable-->
 						</div>
 					</div>
-					<div class="sbmaincontent">
+					
+					<div class="sbmaincontent" style="float: right;">
 						<div class="newslist">
 							<!--#begineditable name="静态翻页列表" action="webber.wbst.com.news.ColumnNews" layout="/system/_component/news/list/stattplpagedownv2.jsp" tpltype="1" contype="news" clone="" viewid="136240" contentviewid="" tagname="静态翻页列表"-->
 
-							<script language="javascript" src="system/resource/js/news/statpagedown.js"></script>
+							<script language="javascript" src="/system/resource/js/news/statpagedown.js"></script>
 							<ul>
 								<li id="line_u11_0">
 									<A title="关于上报2017-2018-1学期实习实践课程材料的通知" target="_blank" href="../info/1021/5417.htm"><span class="newslistatime">2018-03-20</span><span style="float:left;">关于上报2017-2018-1学期实习实践课程材料的通知</span></A>
@@ -409,7 +409,7 @@ DD_belatedPNG.fix('.flash_bar,#tit_fc1,#tit_fc2,#tit_fc3,#tit_fc4,#flashLine,.pn
 										line-height: 14px;
 									}
 								</style>
-								<script language="javascript" src="system/resource/js/gotopage.js"></script>
+								<script language="javascript" src="/system/resource/js/gotopage.js"></script>
 								<script type="text/javascript">
 									function a136240_gopage_fun() {
 										_simple_list_gotopage_fun(1, 'a136240GOPAGE', 2)
@@ -435,6 +435,8 @@ DD_belatedPNG.fix('.flash_bar,#tit_fc1,#tit_fc2,#tit_fc3,#tit_fc4,#flashLine,.pn
 						</div>
 
 					</div>
+				
+				
 				</div>
 
 				<div class="submainfoot">
@@ -511,7 +513,5 @@ DD_belatedPNG.fix('.flash_bar,#tit_fc1,#tit_fc2,#tit_fc3,#tit_fc4,#flashLine,.pn
 				$("#m72").css("visibility", "hidden");
 			})
 		</script>
-	</body>
-
   </body>
 </html>
