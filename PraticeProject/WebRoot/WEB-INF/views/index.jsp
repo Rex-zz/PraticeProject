@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib uri="/struts-tags" prefix="s"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -60,7 +61,12 @@ DD_belatedPNG.fix('.flash_bar,#tit_fc1,#tit_fc2,#tit_fc3,#tit_fc4,#flashLine,.pn
 						<ul id="sddm" style="float: right;">
 							<!--#begineditable name="网站导航" action="" layout="" tpltype="" contype="" clone="" viewid="136193" contentviewid="" tagname="网站导航"-->
 							<li >
-								<a onmouseover="mopen('m1036')" onmouseout="mclosetime()" href="http://jxzx.wzu.edu.cn/">当前登陆:王梦龙</a>
+								<a onmouseover="mopen('m1036')" onmouseout="mclosetime()" href="http://jxzx.wzu.edu.cn/">当前登陆:<s:property value="#session.user.name"/></a>
+								<s:property value="#session.identity"/>
+								<s:if test="#session.user == null"> not null</s:if>
+								<s:if test="#session.identity != null">admin!</s:if>
+								<s:elseif test='identity == "2"'>tea!</s:elseif>
+								<s:elseif test='identity == "1"'>stu!</s:elseif>
 							</li>
 							<li>
 								<a onmouseover="mopen('m1037')" onmouseout="mclosetime()" href="../gzzd.htm">个人中心</a>

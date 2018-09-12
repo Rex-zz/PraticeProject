@@ -30,7 +30,7 @@ public class MyFilter implements Filter {
 			HttpSession session = req.getSession();
 			if(session.getAttribute("user")==null) {
 				session.setAttribute("user", new Student("王梦龙", "男", "123", "716203", "计算机科学与技术", "15计本2", "李俊"));
-				session.setAttribute("identity", "");//0管理员1老师2学生
+				session.setAttribute("identity", new Integer(2));//0管理员1老师2学生
 			}
 			arg2.doFilter(arg0, arg1);
 		// TODO Auto-generated method stub
