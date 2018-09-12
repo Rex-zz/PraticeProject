@@ -1,9 +1,9 @@
 package com.pratice.action;
 
-import javax.servlet.ServletRequest;
-import javax.servlet.http.HttpServletRequest;
+import java.util.Map;
 
-import org.apache.struts2.interceptor.ServletRequestAware;
+import org.apache.struts2.interceptor.RequestAware;
+import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -15,9 +15,6 @@ import com.pratice.entity.Teacher;
 import com.pratice.service.AdminService;
 import com.pratice.service.StudentService;
 import com.pratice.service.TeacherService;
-import com.pratice.service.impl.AdminServiceImpl;
-import com.pratice.service.impl.StudentServiceImpl;
-import com.pratice.service.impl.TeacherServiceImpl;
 /**
  * Martrvy
  * @author 137418235
@@ -25,11 +22,11 @@ import com.pratice.service.impl.TeacherServiceImpl;
  */
 @Controller
 @Scope("prototype")
-public class UserAction extends ActionSupport implements ServletRequestAware{
+public class UserAction extends ActionSupport implements RequestAware,SessionAware{
 	public String id;
 	public String password;
 	public String type;
-	private HttpServletRequest request;
+	private Map<String, Object> request,session;
 	@Autowired
 	private StudentService studentService;
 	@Autowired
@@ -42,23 +39,27 @@ public class UserAction extends ActionSupport implements ServletRequestAware{
 		case "0":
 			Student std = studentService.getEntityById(id);
 			if(std!=null&&std.getPassword().equals(password)) {
+				session.put("user", std);
 				return SUCCESS;
 			}
 			break;
 		case "1":
 			Teacher thr = teacherService.getEntityById(id);
 			if(thr!=null&&thr.getTPassword().equals(password)) {
+				session.put("user", thr);
 				return SUCCESS;
 			}
 			break;
 		case "2":
 			Admin admin = adminService.getEntityById(id);
 			if(admin!=null&&admin.getPassword().equals(password)) {
+				session.put("user",admin);
 				return SUCCESS;
 			}
 			break;
 		}
-		request.setAttribute("error", "账户名或密码错误");
+		request.put("error", "账户名或密码错误");
+		
 		return ERROR;
 	}
 	
@@ -86,11 +87,16 @@ public class UserAction extends ActionSupport implements ServletRequestAware{
 	}
 
 	@Override
-	public void setServletRequest(HttpServletRequest arg0) {
+	public void setSession(Map<String, Object> arg0) {
 		// TODO Auto-generated method stub
-		this.request=arg0;
+		
 	}
 
-	
+	@Override
+	public void setRequest(Map<String, Object> arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	
 }
