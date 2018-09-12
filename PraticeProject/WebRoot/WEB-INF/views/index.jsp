@@ -1,10 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<<<<<<< HEAD
-<%@ taglib uri="/struts-tags" prefix="s"%>
-=======
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
->>>>>>> master
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
