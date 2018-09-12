@@ -33,7 +33,24 @@ public class Student implements java.io.Serializable {
 	}
 
 	/** full constructor */
+	/**
+	 * 学生一定要有学号，应为外部导入
+	 */
 	public Student(String name, String sex, String password, String tel, String major, String class_, String tutor) {
+		this.name = name;
+		this.sex = sex;
+		this.password = password;
+		this.tel = tel;
+		this.major = major;
+		this.class_ = class_;
+		this.tutor = tutor;
+	}
+	
+
+	public Student(String sId, String name, String sex, String password, String tel, String major, String class_,
+			String tutor) {
+		super();
+		SId = sId;
 		this.name = name;
 		this.sex = sex;
 		this.password = password;

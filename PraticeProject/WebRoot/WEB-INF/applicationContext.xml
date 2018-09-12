@@ -21,7 +21,7 @@
 			value="classpath:hibernate.cfg.xml">
 		</property>
 		<property name="dataSource" ref="c3p0DataSource"></property>
-		<property name="packagesToScan" value="com.qunawan.entity"></property>
+		<property name="packagesToScan" value="com.pratice"></property>
 	</bean>
 	<bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />

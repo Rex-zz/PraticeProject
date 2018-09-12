@@ -1,5 +1,10 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<<<<<<< HEAD
 <%@ taglib uri="/struts-tags" prefix="s"%>
+=======
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+>>>>>>> master
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -103,15 +108,15 @@ DD_belatedPNG.fix('.flash_bar,#tit_fc1,#tit_fc2,#tit_fc3,#tit_fc4,#flashLine,.pn
 							<ul>
 								<!--#begineditable name="网站导航-左侧二级" action="" layout="" tpltype="" contype="" clone="" viewid="136230" contentviewid="" tagname="网站导航-左侧二级"-->
 								<li>
-									<a href="sxjx.htm" title="实习见习">实习见习</a>
+									<a href="#" title="实习见习">全部通知</a>
 								</li>
 
 								<li>
-									<a href="jsjn.htm" title="教师技能">教师技能</a>
+									<a href="#" title="教师技能">私人通知</a>
 								</li>
-
+								
 								<li>
-									<a href="bylw_sj_.htm" title="毕业论文（设计）">毕业论文（设计）</a>
+									<a href="#" title="毕业论文（设计）">毕业论文（设计）</a>
 								</li>
 
 								<li>
