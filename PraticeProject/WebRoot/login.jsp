@@ -23,15 +23,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
     <div align="center" style="padding-top: 200px;">
+			<% if(request.getAttribute("error")!=null) %><%=request.getAttribute("error") %>
 			<form action="login.action" method="post">
-				学号:<input type="text" name="id" /><br>
+				账号:<input type="text" name="id" /><br>
 				密码:<input type="text" name="password" /><br>
-				类型:<input type="radio"	name="type" value="0" />学生 
-				<input type="radio"	name="type" value="1" />教师 
-				<input type="radio"	name="type" value="2" />管理员<br>
+				类型:<label><input type="radio"	name="type" value="0" checked="checked"/>学生</label> 
+				<label><input type="radio"	name="type" value="1" />教师 </label>
+				<label><input type="radio"	name="type" value="2" />管理员</label><br>
 				<input type="submit" value="提交"/>
 			</form>
 		</div>
-		<a href="helloword.action">hello</a>
   </body>
 </html>
