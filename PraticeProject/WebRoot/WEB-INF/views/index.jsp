@@ -205,7 +205,7 @@ DD_belatedPNG.fix('.flash_bar,#tit_fc1,#tit_fc2,#tit_fc3,#tit_fc4,#flashLine,.pn
 						<a target="_blank" href="../index/xxfw/wzdxkb.htm">&nbsp;</a>
 						<a target="_blank" href="../index/xxfw/xl_zxsj.htm">&nbsp;</a>
 						<a target="_blank" href="../index/cx.htm">&nbsp;</a>
-						<!--#endeditable-->
+						<!--#endeditable--a>
 					</div>
 				</div>
 				<div class="submainright">
