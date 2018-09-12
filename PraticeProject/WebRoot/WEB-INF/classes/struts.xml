@@ -5,5 +5,9 @@
 		<action name="helloword" class="com.pratice.action.Test" method="test">
 			<result name="success">/WEB-INF/views/success.jsp</result>
 		</action>
+		<action name="login" class="com.pratice.action.UserAction" method="login">
+			<result>/WEB-INF/views/success.jsp</result>
+			<result name="error">/login.jsp</result>
+		</action>
 	</package>
 </struts>    

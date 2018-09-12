@@ -7,16 +7,12 @@ import org.springframework.stereotype.Repository;
 import com.pratice.dao.StudentDao;
 import com.pratice.entity.Student;
 @Repository
-public class StudentDaoImpl extends BaseDaoImpl implements StudentDao {
-
-	
-	
-
+public class StudentDaoImpl extends BaseSessionFactory implements StudentDao {
 	@Override
-	public Student getEntityById(Integer id) {
+	public Student getEntityById(String id) {
 		// TODO Auto-generated method stub
 		
-		return null;
+		return getSession().get(Student.class, id);
 	}
 
 	@Override
