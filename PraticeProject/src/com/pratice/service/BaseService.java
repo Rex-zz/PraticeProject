@@ -3,7 +3,7 @@ package com.pratice.service;
 import java.util.List;
 
 public interface BaseService<T> {
-	public T getEntityById(Integer id);
+	public T getEntityById(String id);
 	public void saveEntity(T entity);
 	public List<T> getEntityList(Object o);
 	public void updateEntity(T entity);

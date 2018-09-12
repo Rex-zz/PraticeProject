@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 @Component
 @Scope("prototype")
-public class BaseDaoImpl {
+public class BaseSessionFactory {
 	@Autowired
 	protected SessionFactory sessionFactory;
 	protected Session getSession() {
