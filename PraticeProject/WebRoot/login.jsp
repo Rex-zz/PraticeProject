@@ -23,6 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
     <div align="center" style="padding-top: 200px;">
+    		${requestScope.error }
 			<form action="login.action" method="post">
 				学号:<input type="text" name="id" /><br>
 				密码:<input type="text" name="password" /><br>
