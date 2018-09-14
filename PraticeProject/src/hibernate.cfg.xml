@@ -6,7 +6,8 @@
 <hibernate-configuration>
 
 <session-factory>
-
+	<property name="show_sql">true</property>
+	<property name="format_sql">true</property>
 </session-factory>
 
 </hibernate-configuration>

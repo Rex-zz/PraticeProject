@@ -9,5 +9,20 @@
 			<result>/WEB-INF/views/index.jsp</result>
 			<result name="error">/login.jsp</result>
 		</action>
+		<action name="toIntention" class="com.pratice.action.StudentAction" method="toIntent">
+			<result>/WEB-INF/views/intention.jsp</result>
+		</action>
+		<action name="intention" class="com.pratice.action.StudentAction" method="intention">
+			<result>/WEB-INF/views/index.jsp</result>
+		</action>
+		<action name="toPractice" class="com.pratice.action.StudentAction" method="toPractice">
+			<result>/WEB-INF/views/stupractice.jsp</result>
+		</action>
+		<action name="practice" class="com.pratice.action.StudentAction" method="practice">
+			<result>/WEB-INF/views/index.jsp</result>
+		</action>
+		<action name="toDiary" class="com.pratice.action.StudentAction" method="toDiary">
+			<result>/WEB-INF/views/diary.jsp</result>
+		</action>
 	</package>
 </struts>    

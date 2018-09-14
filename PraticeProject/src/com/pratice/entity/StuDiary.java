@@ -1,10 +1,12 @@
 package com.pratice.entity;
 
-import java.sql.Timestamp;
+import static javax.persistence.GenerationType.IDENTITY;
+
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -13,7 +15,6 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "stu_diary", catalog = "pratice")
-
 public class StuDiary implements java.io.Serializable {
 
 	// Fields
@@ -24,7 +25,7 @@ public class StuDiary implements java.io.Serializable {
 	private String stuClass;
 	private String stuMajor;
 	private String stuInstitute;
-	private Timestamp date;
+	private Date date;
 	private String content;
 
 	// Constructors
@@ -34,8 +35,8 @@ public class StuDiary implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public StuDiary(Integer stuId, String stuName, String stuClass, String stuMajor, String stuInstitute,
-			Timestamp date, String content) {
+	public StuDiary(Integer stuId, String stuName, String stuClass,
+			String stuMajor, String stuInstitute, Date date, String content) {
 		this.stuId = stuId;
 		this.stuName = stuName;
 		this.stuClass = stuClass;
@@ -48,9 +49,7 @@ public class StuDiary implements java.io.Serializable {
 	// Property accessors
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
-
 	@Column(name = "id", unique = true, nullable = false)
-
 	public Integer getId() {
 		return this.id;
 	}
@@ -60,7 +59,6 @@ public class StuDiary implements java.io.Serializable {
 	}
 
 	@Column(name = "stu_id")
-
 	public Integer getStuId() {
 		return this.stuId;
 	}
@@ -70,7 +68,6 @@ public class StuDiary implements java.io.Serializable {
 	}
 
 	@Column(name = "stu_name", length = 45)
-
 	public String getStuName() {
 		return this.stuName;
 	}
@@ -80,7 +77,6 @@ public class StuDiary implements java.io.Serializable {
 	}
 
 	@Column(name = "stu_class", length = 45)
-
 	public String getStuClass() {
 		return this.stuClass;
 	}
@@ -90,7 +86,6 @@ public class StuDiary implements java.io.Serializable {
 	}
 
 	@Column(name = "stu_major", length = 45)
-
 	public String getStuMajor() {
 		return this.stuMajor;
 	}
@@ -100,7 +95,6 @@ public class StuDiary implements java.io.Serializable {
 	}
 
 	@Column(name = "stu_institute", length = 45)
-
 	public String getStuInstitute() {
 		return this.stuInstitute;
 	}
@@ -110,17 +104,15 @@ public class StuDiary implements java.io.Serializable {
 	}
 
 	@Column(name = "date", length = 19)
-
-	public Timestamp getDate() {
+	public Date getDate() {
 		return this.date;
 	}
 
-	public void setDate(Timestamp date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 
 	@Column(name = "content", length = 500)
-
 	public String getContent() {
 		return this.content;
 	}

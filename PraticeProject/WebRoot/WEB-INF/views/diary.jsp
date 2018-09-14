@@ -189,15 +189,11 @@ DD_belatedPNG.fix('.flash_bar,#tit_fc1,#tit_fc2,#tit_fc3,#tit_fc4,#flashLine,.pn
 					<div class="place">
 						<div class="placeright">
 							<!--#begineditable name="当前位置" action="" layout="" tpltype="" contype="" clone="" viewid="136233" contentviewid="" tagname="当前位置"-->
-							<a href="../index.htm">网站首页</a>
-							&gt;
-							<a href="../_xsxyfzzdzx.htm"> 学生学业发展指导中心</a>
-							&gt;
-							<a href="sxjx.htm">实习见习</a>
+							<a href="../index.htm">新增日记</a>
 							<!--#endeditable-->
 						</div>
 						<div class="placeleft">
-							<!--#begineditable name="栏目名称-右侧" action="" layout="" tpltype="" contype="" clone="" viewid="136232" contentviewid="" tagname="栏目名称-右侧"-->实习见习
+							<!--#begineditable name="栏目名称-右侧" action="" layout="" tpltype="" contype="" clone="" viewid="136232" contentviewid="" tagname="栏目名称-右侧"-->日记列表
 							<!--#endeditable-->
 						</div>
 					</div>
@@ -209,7 +205,7 @@ DD_belatedPNG.fix('.flash_bar,#tit_fc1,#tit_fc2,#tit_fc3,#tit_fc4,#flashLine,.pn
 							<script language="javascript" src="system/resource/js/news/statpagedown.js"></script>
 							<ul>
 								<li id="line_u11_0">
-									<A title="关于上报2017-2018-1学期实习实践课程材料的通知" target="_blank" href="../info/1021/5417.htm"><span class="newslistatime">2018-03-20</span><span style="float:left;">关于上报2017-2018-1学期实习实践课程材料的通知</span></A>
+									<A><span class="newslistatime">2018-03-20</span><span style="float:left;">关于上报2017-2018-1学期实习实践课程材料的通知</span></A>
 								</li>
 								<li id="line_u11_1">
 									<A title="关于上报2016-2017-1学期实习实践课程材料的通知" target="_blank" href="../info/1021/1861.htm"><span class="newslistatime">2017-03-01</span><span style="float:left;">关于上报2016-2017-1学期实习实践课程材料的通知</span></A>

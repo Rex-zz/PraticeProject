@@ -1,10 +1,9 @@
 package com.pratice.entity;
 
-import java.sql.Timestamp;
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -13,14 +12,13 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "stu_practice", catalog = "pratice")
-
 public class StuPractice implements java.io.Serializable {
 
 	// Fields
 
 	private String SId;
-	private Timestamp SStartdate;
-	private Timestamp SEnddate;
+	private Date SStartdate;
+	private Date SEnddate;
 	private String SPraName;
 	private String SJob;
 
@@ -31,7 +29,8 @@ public class StuPractice implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public StuPractice(Timestamp SStartdate, Timestamp SEnddate, String SPraName, String SJob) {
+	public StuPractice(Date SStartdate, Date SEnddate, String SPraName,
+			String SJob) {
 		this.SStartdate = SStartdate;
 		this.SEnddate = SEnddate;
 		this.SPraName = SPraName;
@@ -40,9 +39,7 @@ public class StuPractice implements java.io.Serializable {
 
 	// Property accessors
 	@Id
-
 	@Column(name = "s_id", unique = true, nullable = false, length = 45)
-
 	public String getSId() {
 		return this.SId;
 	}
@@ -52,27 +49,24 @@ public class StuPractice implements java.io.Serializable {
 	}
 
 	@Column(name = "s_startdate", length = 19)
-
-	public Timestamp getSStartdate() {
+	public Date getSStartdate() {
 		return this.SStartdate;
 	}
 
-	public void setSStartdate(Timestamp SStartdate) {
-		this.SStartdate = SStartdate;
+	public void setSStartdate(Date start) {
+		this.SStartdate = start;
 	}
 
 	@Column(name = "s_enddate", length = 19)
-
-	public Timestamp getSEnddate() {
+	public Date getSEnddate() {
 		return this.SEnddate;
 	}
 
-	public void setSEnddate(Timestamp SEnddate) {
-		this.SEnddate = SEnddate;
+	public void setSEnddate(Date end) {
+		this.SEnddate = end;
 	}
 
 	@Column(name = "s_pra_name", length = 45)
-
 	public String getSPraName() {
 		return this.SPraName;
 	}
@@ -82,7 +76,6 @@ public class StuPractice implements java.io.Serializable {
 	}
 
 	@Column(name = "s_job", length = 45)
-
 	public String getSJob() {
 		return this.SJob;
 	}

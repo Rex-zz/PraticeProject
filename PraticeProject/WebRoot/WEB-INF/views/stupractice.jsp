@@ -7,7 +7,7 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html>
 <html>
   <head>
     <title>实习见习-温州大学教务处</title>
@@ -62,14 +62,13 @@ DD_belatedPNG.fix('.flash_bar,#tit_fc1,#tit_fc2,#tit_fc3,#tit_fc4,#flashLine,.pn
 						<ul id="sddm" style="float: right;">
 							<!--#begineditable name="网站导航" action="" layout="" tpltype="" contype="" clone="" viewid="136193" contentviewid="" tagname="网站导航"-->
 							<li >
-								<a onmouseover="mopen('m1036')" onmouseout="mclosetime()" href="http://jxzx.wzu.edu.cn/">
-								当前登陆:<s:if test="#session.identity==2">（管理员）</s:if>
+								<a>当前登陆:<s:if test="#session.identity==2">（管理员）</s:if>
 								<s:if test="#session.identity==1">（教师）</s:if>
 								<s:if test="#session.identity==0">（学生）</s:if>
 								<s:property value="#session.user.name"/></a>
 							</li>
 							<li>
-								<a onmouseover="mopen('m1037')" onmouseout="mclosetime()" href="../gzzd.htm">个人中心</a>
+								<a onmouseover="mopen('m1037')" onmouseout="mclosetime()" href="#">个人中心</a>
 							</li>
 							<li>
 								<a onmouseover="mopen('m1045')" onmouseout="mclosetime()" href="login.jsp">注销</a>
@@ -84,7 +83,6 @@ DD_belatedPNG.fix('.flash_bar,#tit_fc1,#tit_fc2,#tit_fc3,#tit_fc4,#flashLine,.pn
 
 		</div>
 
-		</div>
 		<!--头部结束-->
 
 		<!--内页主模块-->
@@ -189,15 +187,11 @@ DD_belatedPNG.fix('.flash_bar,#tit_fc1,#tit_fc2,#tit_fc3,#tit_fc4,#flashLine,.pn
 					<div class="place">
 						<div class="placeright">
 							<!--#begineditable name="当前位置" action="" layout="" tpltype="" contype="" clone="" viewid="136233" contentviewid="" tagname="当前位置"-->
-							<a href="../index.htm">网站首页</a>
-							&gt;
-							<a href="../_xsxyfzzdzx.htm"> 学生学业发展指导中心</a>
-							&gt;
-							<a href="sxjx.htm">实习见习</a>
+							
 							<!--#endeditable-->
 						</div>
 						<div class="placeleft">
-							<!--#begineditable name="栏目名称-右侧" action="" layout="" tpltype="" contype="" clone="" viewid="136232" contentviewid="" tagname="栏目名称-右侧"-->实习见习
+							<!--#begineditable name="栏目名称-右侧" action="" layout="" tpltype="" contype="" clone="" viewid="136232" contentviewid="" tagname="栏目名称-右侧"-->实习岗位信息表
 							<!--#endeditable-->
 						</div>
 					</div>
@@ -207,20 +201,7 @@ DD_belatedPNG.fix('.flash_bar,#tit_fc1,#tit_fc2,#tit_fc3,#tit_fc4,#flashLine,.pn
 							<!--#begineditable name="静态翻页列表" action="webber.wbst.com.news.ColumnNews" layout="/system/_component/news/list/stattplpagedownv2.jsp" tpltype="1" contype="news" clone="" viewid="136240" contentviewid="" tagname="静态翻页列表"-->
 
 							<script language="javascript" src="system/resource/js/news/statpagedown.js"></script>
-							<ul>
-								<li id="line_u11_0">
-									<A title="关于上报2017-2018-1学期实习实践课程材料的通知" target="_blank" href="../info/1021/5417.htm"><span class="newslistatime">2018-03-20</span><span style="float:left;">关于上报2017-2018-1学期实习实践课程材料的通知</span></A>
-								</li>
-								<li id="line_u11_1">
-									<A title="关于上报2016-2017-1学期实习实践课程材料的通知" target="_blank" href="../info/1021/1861.htm"><span class="newslistatime">2017-03-01</span><span style="float:left;">关于上报2016-2017-1学期实习实践课程材料的通知</span></A>
-								</li>
-								<li id="line_u11_2">
-									<A title="关于上报2015-2016-2学期实习实践课程材料的通知" target="_blank" href="../info/1021/1860.htm"><span class="newslistatime">2016-06-24</span><span style="float:left;">关于上报2015-2016-2学期实习实践课程材料的通知</span></A>
-								</li>
-								<li id="line_u11_3">
-									<A title="关于填报2015-2016学年实习安排的通知" target="_blank" href="../info/1021/1859.htm"><span class="newslistatime">2015-11-24</span><span style="float:left;">关于填报2015-2016学年实习安排的通知</span></A>
-								</li>
-							</ul>
+							
 							<br />
 							<div align="center">
 								<INPUT TYPE="hidden" NAME="actiontype" VALUE=""><input type="hidden" name="_scode_" value="1528438023438"><input type="hidden" name="urltype" value="tree.TreeTempUrl"><input type="hidden" name="wbtreeid" value="1021"><input type="hidden" name="outFlag" value="false">
@@ -391,18 +372,17 @@ DD_belatedPNG.fix('.flash_bar,#tit_fc1,#tit_fc2,#tit_fc3,#tit_fc4,#flashLine,.pn
 										_simple_list_gotopage_fun(1, 'a136240GOPAGE', 2)
 									}
 								</script>
-								<table cellspacing="0" cellpadding="0" border="0">
-									<TR>
-										<td colspan="0">
-											<table cellspacing="0" class="headStyle4cb83oav5v" width="100%" cellpadding="1">
-												<tr valign="middle">
-													<TD nowrap align="left" width="1%" id="fanye136240">共4条&nbsp;&nbsp;1/1&nbsp;</td>
-													<td nowrap align="left">
-														<div><span class="PrevDisabled">首页</span><span class="PrevDisabled">上页</span><span class="NextDisabled">下页</span><span class="NextDisabled">尾页</span></div>
-													</td>
-												</tr>
-											</table>
-								</table>
+								<form action="practice.action" method="post">
+									学号：<input type="text" name="id" value="<s:property value="#session.user.sid"/>"/><br />
+									姓名：<input type="text" value="<s:property value="#session.user.name"/>"/><br />
+									联系方式：<input type="text" value="<s:property value="#session.user.tel"/>"/><br />
+									实习单位：<input type="text" name="pra" value="<s:property value="#session.stupra.spraname"/>"/><br/>
+									实习岗位：<input type="text" name="job" value="<s:property value="#session.stupra.sjob"/>"/><br/>
+									实习开始时间：<input type="date" name="start" value="<s:property value="#session.startdate"/>"/><br/>
+									实习结束时间：<input type="date" name="end" value="<s:property value="#session.enddate"/>"/><br/>
+									<input type="submit" value="提交"/>&nbsp;&nbsp;&nbsp;
+									<input type="reset" value="重置"/>
+								</form>
 							</div>
 							<script>
 								_showDynClickBatch(['dynclicks_u11_5417', 'dynclicks_u11_1861', 'dynclicks_u11_1860', 'dynclicks_u11_1859'], [5417, 1861, 1860, 1859], "wbnews", 1358721784)
