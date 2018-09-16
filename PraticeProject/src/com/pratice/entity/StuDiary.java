@@ -27,6 +27,7 @@ public class StuDiary implements java.io.Serializable {
 	private String stuInstitute;
 	private Date date;
 	private String content;
+	private String title;
 
 	// Constructors
 
@@ -119,6 +120,15 @@ public class StuDiary implements java.io.Serializable {
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+
+	@Column(name = "title", length = 20)
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 }

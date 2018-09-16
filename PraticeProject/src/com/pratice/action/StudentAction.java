@@ -1,6 +1,8 @@
 package com.pratice.action;
 
+import java.text.ParseException;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,10 +17,12 @@ import org.springframework.stereotype.Controller;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import com.pratice.entity.StuDiary;
 import com.pratice.entity.StuIntention;
 import com.pratice.entity.StuPractice;
 import com.pratice.entity.Student;
 import com.pratice.service.AdminService;
+import com.pratice.service.StuDiaryService;
 import com.pratice.service.StuIntentionService;
 import com.pratice.service.StuPracticeService;
 import com.pratice.service.StudentService;
@@ -37,6 +41,7 @@ public class StudentAction extends ActionSupport implements RequestAware,
 	public String name;
 	public String sex;
 	public int way;
+	public int diaryPage = 1;
 	private Map<String, Object> request, session;
 	@Autowired
 	private StudentService studentService;
@@ -48,6 +53,8 @@ public class StudentAction extends ActionSupport implements RequestAware,
 	private StuPracticeService stuPracticeService;
 	@Autowired
 	private StuIntentionService stuIntentionService;
+	@Autowired
+	private StuDiaryService stuDiaryService;
 
 	public String toIntent() {
 		HttpServletRequest request = (HttpServletRequest) ActionContext
@@ -108,7 +115,22 @@ public class StudentAction extends ActionSupport implements RequestAware,
 		return SUCCESS;
 	}
 
-	public String toDiary() {
+	public String toDiary() throws ParseException {
+		HttpServletRequest request = (HttpServletRequest) ActionContext
+				.getContext().get(StrutsStatics.HTTP_REQUEST);
+		HttpSession se = request.getSession();
+		Student st = (Student) se.getAttribute("user");
+		List<StuDiary> diaries = stuDiaryService.getEntityList(st.getSId());
+		if (diaries != null) {
+			session.put("diaries", diaries);
+			System.out.println(diaryPage);
+			if (diaryPage < 1)
+				diaryPage = 1;
+			if (diaryPage > (diaries.size() - 1) / 7 + 1)
+				diaryPage = (diaries.size() - 1) / 7 + 1;
+			System.out.println(diaryPage);
+			session.put("diaryPage", diaryPage);
+		}
 		return SUCCESS;
 	}
 
@@ -182,6 +204,14 @@ public class StudentAction extends ActionSupport implements RequestAware,
 
 	public void setWay(int way) {
 		this.way = way;
+	}
+
+	public int getDiaryPage() {
+		return diaryPage;
+	}
+
+	public void setDiaryPage(int diaryPage) {
+		this.diaryPage = diaryPage;
 	}
 
 	@Override

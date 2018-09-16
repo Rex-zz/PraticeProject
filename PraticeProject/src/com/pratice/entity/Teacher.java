@@ -14,12 +14,12 @@ public class Teacher implements java.io.Serializable {
 
 	// Fields
 
-	private String Id;
-	private String Name;
-	private String Tel;
-	private String Major;
-	private Integer Stunum;
-	private String Password;
+	private String TId;
+	private String TName;
+	private String TTel;
+	private String TMajor;
+	private Integer TStunum;
+	private String TPassword;
 
 	// Constructors
 
@@ -29,76 +29,76 @@ public class Teacher implements java.io.Serializable {
 
 	/** minimal constructor */
 	public Teacher(String TName, String TTel, String TMajor, String TPassword) {
-		this.Name = TName;
-		this.Tel = TTel;
-		this.Major = TMajor;
-		this.Password = TPassword;
+		this.TName = TName;
+		this.TTel = TTel;
+		this.TMajor = TMajor;
+		this.TPassword = TPassword;
 	}
 
 	/** full constructor */
 	public Teacher(String TName, String TTel, String TMajor, Integer TStunum,
 			String TPassword) {
-		this.Name = TName;
-		this.Tel = TTel;
-		this.Major = TMajor;
-		this.Stunum = TStunum;
-		this.Password = TPassword;
+		this.TName = TName;
+		this.TTel = TTel;
+		this.TMajor = TMajor;
+		this.TStunum = TStunum;
+		this.TPassword = TPassword;
 	}
 
 	// Property accessors
 	@Id
 	@Column(name = "t_id", unique = true, nullable = false, length = 45)
 	public String getId() {
-		return this.Id;
+		return this.TId;
 	}
 
 	public void setId(String TId) {
-		this.Id = TId;
+		this.TId = TId;
 	}
 
 	@Column(name = "t_name", nullable = false, length = 45)
 	public String getName() {
-		return this.Name;
+		return this.TName;
 	}
 
 	public void setName(String TName) {
-		this.Name = TName;
+		this.TName = TName;
 	}
 
 	@Column(name = "t_tel", nullable = false, length = 45)
 	public String getTel() {
-		return this.Tel;
+		return this.TTel;
 	}
 
 	public void setTel(String TTel) {
-		this.Tel = TTel;
+		this.TTel = TTel;
 	}
 
 	@Column(name = "t_major", nullable = false, length = 45)
 	public String getMajor() {
-		return this.Major;
+		return this.TMajor;
 	}
 
 	public void setMajor(String TMajor) {
-		this.Major = TMajor;
+		this.TMajor = TMajor;
 	}
 
 	@Column(name = "t_stunum")
 	public Integer getStunum() {
-		return this.Stunum;
+		return this.TStunum;
 	}
 
 	public void setStunum(Integer TStunum) {
-		this.Stunum = TStunum;
+		this.TStunum = TStunum;
 	}
 
 	@Column(name = "t_password", nullable = false, length = 45)
 	public String getPassword() {
-		return this.Password;
+		return this.TPassword;
 	}
 
 	public void setPassword(String TPassword) {
-		this.Password = TPassword;
+		this.TPassword = TPassword;
 	}
 
 }

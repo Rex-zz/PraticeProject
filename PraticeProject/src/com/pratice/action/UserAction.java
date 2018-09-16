@@ -67,12 +67,10 @@ public class UserAction extends ActionSupport implements RequestAware,
 					session.put("practiced", 1);
 				}
 				if (sp != null && sp.getSStartdate() != null) {
-					session.put("start", sp.getSStartdate().toString()
-							.substring(0, 10));
+					session.put("start", sp.getSStartdate().toString());
 				}
 				if (sp != null && sp.getSEnddate() != null) {
-					session.put("end",
-							sp.getSEnddate().toString().substring(0, 10));
+					session.put("end", sp.getSEnddate().toString());
 				}
 				if (sit != null) {
 					session.put("intention", 1);
