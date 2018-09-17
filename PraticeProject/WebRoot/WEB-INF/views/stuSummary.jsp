@@ -126,8 +126,8 @@ DD_belatedPNG.fix('.flash_bar,#tit_fc1,#tit_fc2,#tit_fc3,#tit_fc4,#flashLine,.pn
 									<li><a href="toDiary.action" >日记</a></li><% } %>
 									<% if((String)session.getAttribute("end")!=null &&
 											nowDate.compareTo((String)session.getAttribute("end"))>0){ %>
-									<li><a href="#" >实习报告</a></li>
-									<li><a href="#" >实习总结</a></li><%} %>
+									<li><a href="toReport.action" >实习报告<s:if test="#session.report!=null">(已填写)</s:if></a></li>
+									<li><a href="toSummary.action" >实习总结<s:if test="#session.summary!=null">(已填写)</s:if></a></li><%} %>
 								</s:elseif>
 
 
@@ -191,7 +191,7 @@ DD_belatedPNG.fix('.flash_bar,#tit_fc1,#tit_fc2,#tit_fc3,#tit_fc4,#flashLine,.pn
 							<!--#endeditable-->
 						</div>
 						<div class="placeleft">
-							<!--#begineditable name="栏目名称-右侧" action="" layout="" tpltype="" contype="" clone="" viewid="136232" contentviewid="" tagname="栏目名称-右侧"-->实习岗位信息表
+							<!--#begineditable name="栏目名称-右侧" action="" layout="" tpltype="" contype="" clone="" viewid="136232" contentviewid="" tagname="栏目名称-右侧"-->实习总结
 							<!--#endeditable-->
 						</div>
 					</div>
@@ -204,14 +204,13 @@ DD_belatedPNG.fix('.flash_bar,#tit_fc1,#tit_fc2,#tit_fc3,#tit_fc4,#flashLine,.pn
 							
 							<br />
 							<div align="center">
-								<form action="practice.action" method="post">
-									学号：<input type="text" name="id" value="<s:property value="#session.user.sid"/>"/><br />
-									姓名：<input type="text" value="<s:property value="#session.user.name"/>"/><br />
-									联系方式：<input type="text" value="<s:property value="#session.user.tel"/>"/><br />
-									实习单位：<input type="text" name="pra" value="<s:property value="#session.stupra.spraname"/>"/><br/>
-									实习岗位：<input type="text" name="job" value="<s:property value="#session.stupra.sjob"/>"/><br/>
-									实习开始时间：<input type="date" name="start" value="<s:property value="#session.startdate"/>"/><br/>
-									实习结束时间：<input type="date" name="end" value="<s:property value="#session.enddate"/>"/><br/>
+								<form action="stuSummary.action" method="post">
+									学号：<input type="text" name="summary.id" value="<s:property value="#session.user.sid"/>"/><br />
+									姓名：<input type="text" name="summary.name" value="<s:property value="#session.user.name"/>"/><br />
+									专业：<input type="text" name="summary.major" value="<s:property value="#session.user.major"/>"/><br />
+									班级：<input type="text" name="summary.class_" value="<s:property value="#session.user.class_"/>"/><br/>
+									总结内容：<br/>
+									<textarea rows="10" cols="50" name="summary.content"><s:property value="#session.summary.content"/></textarea><br>
 									<input type="submit" value="提交"/>&nbsp;&nbsp;&nbsp;
 									<input type="reset" value="重置"/>
 								</form>

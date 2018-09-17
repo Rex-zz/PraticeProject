@@ -7,43 +7,43 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.pratice.dao.StuDiaryDao;
-import com.pratice.entity.StuDiary;
-import com.pratice.service.StuDiaryService;
+import com.pratice.dao.StuReportDao;
+import com.pratice.entity.StuReport;
+import com.pratice.service.StuReportService;
 
 @Service
 @Scope("prototype")
 @Transactional
-public class StuDiaryServiceImpl implements StuDiaryService {
+public class StuReportServiceImpl implements StuReportService {
 	@Autowired
-	private StuDiaryDao StuDiaryDao;
+	private StuReportDao stureportdao;
 
 	@Override
-	public StuDiary getEntityById(String id) {
+	public StuReport getEntityById(String id) {
 		// TODO Auto-generated method stub
-		return StuDiaryDao.getEntityById(id);
+		return stureportdao.getEntityById(id);
 	}
 
 	@Override
-	public void saveEntity(StuDiary entity) {
+	public void saveEntity(StuReport entity) {
 		// TODO Auto-generated method stub
-		StuDiaryDao.saveEntity(entity);
+		stureportdao.saveEntity(entity);
 	}
 
 	@Override
-	public List<StuDiary> getEntityList(Object o) {
+	public List<StuReport> getEntityList(Object o) {
 		// TODO Auto-generated method stub
-		return StuDiaryDao.getEntityList(o);
+		return null;
 	}
 
 	@Override
-	public void updateEntity(StuDiary entity) {
+	public void updateEntity(StuReport entity) {
 		// TODO Auto-generated method stub
-		StuDiaryDao.updateEntity(entity);
+
 	}
 
 	@Override
-	public void deleteEntity(StuDiary entity) {
+	public void deleteEntity(StuReport entity) {
 		// TODO Auto-generated method stub
 
 	}

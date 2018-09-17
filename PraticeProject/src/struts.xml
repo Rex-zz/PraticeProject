@@ -24,5 +24,33 @@
 		<action name="toDiary" class="com.pratice.action.StudentAction" method="toDiary">
 			<result>/WEB-INF/views/diary.jsp</result>
 		</action>
+		<action name="toAddDiary" class="com.pratice.action.StudentAction" method="toAddDiary">
+			<result>/WEB-INF/views/addDiary.jsp</result>
+		</action>
+		<action name="addDiary" class="com.pratice.action.StudentAction" method="addDiary">
+			<result type="redirectAction">
+				<param name="actionName">toDiary</param>
+			</result>
+		</action>
+		<action name="showDiary" class="com.pratice.action.StudentAction" method="showDiary">
+			<result>/WEB-INF/views/showDiary.jsp</result>
+		</action>
+		<action name="updateDiary" class="com.pratice.action.StudentAction" method="updateDiary">
+			<result type="redirectAction">
+				<param name="actionName">toDiary</param>
+			</result>
+		</action>
+		<action name="toReport" class="com.pratice.action.StudentAction" method="toReport">
+			<result>/WEB-INF/views/stuReport.jsp</result>
+		</action>
+		<action name="toSummary" class="com.pratice.action.StudentAction" method="toSummary">
+			<result>/WEB-INF/views/stuSummary.jsp</result>
+		</action>
+		<action name="stuReport" class="com.pratice.action.StudentAction" method="stuReport">
+			<result>/WEB-INF/views/index.jsp</result>
+		</action>
+		<action name="stuSummary" class="com.pratice.action.StudentAction" method="stuSummary">
+			<result>/WEB-INF/views/index.jsp</result>
+		</action>
 	</package>
 </struts>    

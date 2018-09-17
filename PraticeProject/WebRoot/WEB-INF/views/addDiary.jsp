@@ -191,7 +191,7 @@ DD_belatedPNG.fix('.flash_bar,#tit_fc1,#tit_fc2,#tit_fc3,#tit_fc4,#flashLine,.pn
 							<!--#endeditable-->
 						</div>
 						<div class="placeleft">
-							<!--#begineditable name="栏目名称-右侧" action="" layout="" tpltype="" contype="" clone="" viewid="136232" contentviewid="" tagname="栏目名称-右侧"-->实习岗位信息表
+							<!--#begineditable name="栏目名称-右侧" action="" layout="" tpltype="" contype="" clone="" viewid="136232" contentviewid="" tagname="栏目名称-右侧"-->新增日记
 							<!--#endeditable-->
 						</div>
 					</div>
@@ -204,14 +204,13 @@ DD_belatedPNG.fix('.flash_bar,#tit_fc1,#tit_fc2,#tit_fc3,#tit_fc4,#flashLine,.pn
 							
 							<br />
 							<div align="center">
-								<form action="practice.action" method="post">
-									学号：<input type="text" name="id" value="<s:property value="#session.user.sid"/>"/><br />
-									姓名：<input type="text" value="<s:property value="#session.user.name"/>"/><br />
-									联系方式：<input type="text" value="<s:property value="#session.user.tel"/>"/><br />
-									实习单位：<input type="text" name="pra" value="<s:property value="#session.stupra.spraname"/>"/><br/>
-									实习岗位：<input type="text" name="job" value="<s:property value="#session.stupra.sjob"/>"/><br/>
-									实习开始时间：<input type="date" name="start" value="<s:property value="#session.startdate"/>"/><br/>
-									实习结束时间：<input type="date" name="end" value="<s:property value="#session.enddate"/>"/><br/>
+								<form action="addDiary.action" method="post">
+									<table>
+										<tr><td align="right">标题：</td><td><input type="text" name="title"></td></tr>
+										<tr><td colspan="2" align="center">日记内容：</td></tr>
+										<tr><td colspan="2"><textarea rows="10" cols="50" name="content"></textarea></td></tr>
+									</table>
+									
 									<input type="submit" value="提交"/>&nbsp;&nbsp;&nbsp;
 									<input type="reset" value="重置"/>
 								</form>

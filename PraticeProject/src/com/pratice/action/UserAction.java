@@ -12,11 +12,15 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.pratice.entity.Admin;
 import com.pratice.entity.StuIntention;
 import com.pratice.entity.StuPractice;
+import com.pratice.entity.StuReport;
+import com.pratice.entity.StuSummary;
 import com.pratice.entity.Student;
 import com.pratice.entity.Teacher;
 import com.pratice.service.AdminService;
 import com.pratice.service.StuIntentionService;
 import com.pratice.service.StuPracticeService;
+import com.pratice.service.StuReportService;
+import com.pratice.service.StuSummaryService;
 import com.pratice.service.StudentService;
 import com.pratice.service.TeacherService;
 
@@ -44,12 +48,18 @@ public class UserAction extends ActionSupport implements RequestAware,
 	private StuPracticeService stuPracticeService;
 	@Autowired
 	private StuIntentionService stuIntentionService;
+	@Autowired
+	private StuReportService stuReportService;
+	@Autowired
+	private StuSummaryService stuSummaryService;
 
 	public String login() {
 		session.remove("start");
 		session.remove("end");
 		session.remove("intention");
 		session.remove("practiced");
+		session.remove("summary");
+		session.remove("report");
 		if (id == "" || password == "") {
 			request.put("error", "账户名或密码为空");
 			return ERROR;
@@ -61,6 +71,8 @@ public class UserAction extends ActionSupport implements RequestAware,
 				StuPractice sp = stuPracticeService.getEntityById(id);
 				StuIntention sit = stuIntentionService.getEntityBySid(std
 						.getSId());
+				StuReport sr = stuReportService.getEntityById(id);
+				StuSummary ss = stuSummaryService.getEntityById(id);
 				session.put("user", std);
 				session.put("identity", type);
 				if (sp != null) {
@@ -74,6 +86,12 @@ public class UserAction extends ActionSupport implements RequestAware,
 				}
 				if (sit != null) {
 					session.put("intention", 1);
+				}
+				if (sr != null) {
+					session.put("report", sr);
+				}
+				if (ss != null) {
+					session.put("summary", ss);
 				}
 				return SUCCESS;
 			}

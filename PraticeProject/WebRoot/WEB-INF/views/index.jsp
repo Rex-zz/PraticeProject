@@ -128,8 +128,8 @@ DD_belatedPNG.fix('.flash_bar,#tit_fc1,#tit_fc2,#tit_fc3,#tit_fc4,#flashLine,.pn
 									<li><a href="toDiary.action" >日记</a></li><% } %>
 									<% if((String)session.getAttribute("end")!=null &&
 											nowDate.compareTo((String)session.getAttribute("end"))>0){ %>
-									<li><a href="#" >实习报告</a></li>
-									<li><a href="#" >实习总结</a></li><%} %>
+									<li><a href="toReport.action" >实习报告<s:if test="#session.report!=null">(已填写)</s:if></a></li>
+									<li><a href="toSummary.action" >实习总结<s:if test="#session.summary!=null">(已填写)</s:if></a></li><%} %>
 								</s:elseif>
 
 

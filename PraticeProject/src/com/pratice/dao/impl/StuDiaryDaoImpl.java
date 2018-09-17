@@ -14,7 +14,7 @@ public class StuDiaryDaoImpl extends BaseSessionFactory implements StuDiaryDao {
 	@Override
 	public StuDiary getEntityById(String id) {
 		// TODO Auto-generated method stub
-		return getSession().get(StuDiary.class, id);
+		return getSession().get(StuDiary.class, Integer.parseInt(id));
 	}
 
 	@Override
@@ -27,7 +27,7 @@ public class StuDiaryDaoImpl extends BaseSessionFactory implements StuDiaryDao {
 	public List<StuDiary> getEntityList(Object o) {
 		// TODO Auto-generated method stub
 		List<StuDiary> diaries = new ArrayList<StuDiary>();
-		String hql = "from StuDiary where stu_id= ?0";
+		String hql = "from StuDiary where stu_id= ?0 order by date desc";
 		diaries = getSession().createQuery(hql).setParameter(0, o)
 				.getResultList();
 		return diaries;
@@ -36,7 +36,7 @@ public class StuDiaryDaoImpl extends BaseSessionFactory implements StuDiaryDao {
 	@Override
 	public void updateEntity(StuDiary entity) {
 		// TODO Auto-generated method stub
-
+		getSession().update(entity);
 	}
 
 	@Override

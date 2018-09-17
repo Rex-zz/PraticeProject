@@ -130,8 +130,8 @@ DD_belatedPNG.fix('.flash_bar,#tit_fc1,#tit_fc2,#tit_fc3,#tit_fc4,#flashLine,.pn
 									<li><a href="toDiary.action" >日记</a></li><% } %>
 									<% if((String)session.getAttribute("end")!=null &&
 											nowDate.compareTo((String)session.getAttribute("end"))>0){ %>
-									<li><a href="#" >实习报告</a></li>
-									<li><a href="#" >实习总结</a></li><%} %>
+									<li><a href="toReport.action" >实习报告<s:if test="#session.report!=null">(已填写)</s:if></a></li>
+									<li><a href="toSummary.action" >实习总结<s:if test="#session.summary!=null">(已填写)</s:if></a></li><%} %>
 								</s:elseif>
 
 
@@ -191,7 +191,8 @@ DD_belatedPNG.fix('.flash_bar,#tit_fc1,#tit_fc2,#tit_fc3,#tit_fc4,#flashLine,.pn
 					<div class="place">
 						<div class="placeright">
 							<!--#begineditable name="当前位置" action="" layout="" tpltype="" contype="" clone="" viewid="136233" contentviewid="" tagname="当前位置"-->
-							<a href="../index.htm" style="color: red;">新增日记</a>
+							<%int isadded=(Integer)session.getAttribute("DiaryAdded"); %>
+							<a href="toAddDiary.action" style="<%if(isadded==1){%>pointer-events: none;<%}else{%>color: red<%}%>;">新增日记</a>
 							<!--#endeditable-->
 						</div>
 						<div class="placeleft">
@@ -208,13 +209,14 @@ DD_belatedPNG.fix('.flash_bar,#tit_fc1,#tit_fc2,#tit_fc3,#tit_fc4,#flashLine,.pn
 							<s:if test="#session.diaries!=null">
 							<%  List<StuDiary> sd=(List<StuDiary>)session.getAttribute("diaries"); 
 							    int num =sd.size();
+							    int pagenum=7;
 							    int dpage=(Integer)session.getAttribute("diaryPage");
-							    int n=7>(num-((dpage-1)*7-1))?(num):(dpage*7-1);
+							    int n=pagenum>(num-((dpage-1)*pagenum-1))?(num):(dpage*pagenum-1);
 							    session.putValue("n", n);%>
 								<ul>
 									<s:iterator value="#session.diaries" var="my" begin="(#session.diaryPage-1)*7" end="#session.n-1">
 										<li>
-											<a><span class="newslistatime"><s:date name="#my.date" format="yyyy-MM-dd"/></span><span style="float:left;"><s:property value="#my.title"/></span></a>
+											<a href="showDiary.action?did=<s:property value="#my.id"/>"><span class="newslistatime"><s:date name="#my.date" format="yyyy-MM-dd"/></span><span style="float:left;"><s:property value="#my.title"/></span></a>
 										</li>
 									</s:iterator>
 								</ul>
@@ -222,9 +224,9 @@ DD_belatedPNG.fix('.flash_bar,#tit_fc1,#tit_fc2,#tit_fc3,#tit_fc4,#flashLine,.pn
 								<div align="center">
 									<a class="page" style="<%if(dpage<=1){ %>pointer-events:none;<%}else{ %>color:blue;<%} %>" href="toDiary.action?diaryPage=1">首页</a>&nbsp;&nbsp;&nbsp;
 									<a style="<%if(dpage<=1){ %>pointer-events:none;<%}else{ %>color:blue;<%} %>" href="toDiary.action?diaryPage=<s:property value="#session.diaryPage-1"/>">上一页</a>&nbsp;&nbsp;&nbsp;
-									<%=dpage %>/<%=(num-1)/7+1 %>&nbsp;&nbsp;&nbsp;
-									<a style="<%if(dpage>=(num-1)/7+1){ %>pointer-events:none;<%}else{ %>color:blue;<%} %>" href="toDiary.action?diaryPage=<s:property value="#session.diaryPage+1"/>">下一页</a>&nbsp;&nbsp;&nbsp;
-									<a style="<%if(dpage>=(num-1)/7+1){ %>pointer-events:none;<%}else{ %>color:blue;<%} %>" href="toDiary.action?diaryPage=<%=(num-1)/7+1%>">尾页</a>
+									<font size="3px"><%=dpage %>/<%=(num-1)/pagenum+1 %>&nbsp;&nbsp;&nbsp;</font>
+									<a style="<%if(dpage>=(num-1)/pagenum+1){ %>pointer-events:none;<%}else{ %>color:blue;<%} %>" href="toDiary.action?diaryPage=<s:property value="#session.diaryPage+1"/>">下一页</a>&nbsp;&nbsp;&nbsp;
+									<a style="<%if(dpage>=(num-1)/pagenum+1){ %>pointer-events:none;<%}else{ %>color:blue;<%} %>" href="toDiary.action?diaryPage=<%=(num-1)/pagenum+1%>">尾页</a>
 								</div>
 							</s:if>
 							<br />
