@@ -25,14 +25,33 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script src="dfiles/9914/template/default/js/msclass.js" type="text/javascript"></script>
 		<script type="text/javascript" src="dfiles/9914/template/default/js/car.js"></script>
 		<script type="text/javascript" src="dfiles/9914/template/default/js/bdtxk2.js"></script>
-		<!--IE6透明判断-->
-		<!--[if IE 6]>
-<script src="dfiles/9914/template/default/js/bdtxk1.js"></script>
-<script>
-DD_belatedPNG.fix('.flash_bar,#tit_fc1,#tit_fc2,#tit_fc3,#tit_fc4,#flashLine,.png');
-</script>
-<![endif]-->
-
+		<script type="text/javascript" src="Jquery/jquery-1.10.2.js"></script>
+		<script type="text/javascript">
+		$(function(){
+				
+				
+				
+				$.ajax({
+					type:"GET",
+					url:"allMessages.action?page=0",
+					data:new Date(),
+					success:function(data){
+						$("div.sbmaincontent").empty();
+						$("div.sbmaincontent").html(data);
+					}
+				})
+				
+				$("a").click(function(){
+				var url=this.href;
+				var args={"time":new Date()};
+				$.get(url,args,function(data){
+					$("div.sbmaincontent").empty();
+					$("div.sbmaincontent").html(data);
+				},"html")
+				return false;
+				})
+			})
+		</script>
 		<!--Announced by Visual SiteBuilder 9-->
 		<!-- CustomerNO:77656262657232307b7647545251574103070000 -->
 		<script type="text/javascript" src="system/resource/js/counter.js"></script>
@@ -69,10 +88,10 @@ DD_belatedPNG.fix('.flash_bar,#tit_fc1,#tit_fc2,#tit_fc3,#tit_fc4,#flashLine,.pn
 								<s:property value="#session.user.name"/></a>
 							</li>
 							<li>
-								<a onmouseover="mopen('m1037')" onmouseout="mclosetime()" href="../gzzd.htm">个人中心</a>
+								<a href="../gzzd.htm">个人中心</a>
 							</li>
 							<li>
-								<a onmouseover="mopen('m1045')" onmouseout="mclosetime()" href="login.jsp">注销</a>
+								<a href="login.jsp">注销</a>
 							</li>
 							
 							<!--#endeditable-->
@@ -101,14 +120,13 @@ DD_belatedPNG.fix('.flash_bar,#tit_fc1,#tit_fc2,#tit_fc3,#tit_fc4,#flashLine,.pn
 							<ul>
 								<!--#begineditable name="网站导航-左侧二级" action="" layout="" tpltype="" contype="" clone="" viewid="136230" contentviewid="" tagname="网站导航-左侧二级"-->
 								<li>
-									<a href="#" title="实习见习">查看通知</a>
+									<a href="allMessages.action?page=0" title="实习见习">查看通知</a>
 								</li>
 								<s:if test="#session.identity==2">
-									<li><a href="#" >发布通知</a></li>
-									<li><a href="#" >查看信息</a></li>
-									<li><a href="#" >抽查记录</a></li>
-									<li><a href="#" >导入信息</a></li>
-									<li><a href="#" >导出信息</a></li>
+									<li><a href="messageform.action" >发布通知</a></li>
+									<li><a href="userInforPage.action" >查看信息</a></li>
+									<li><a href="upload.action" >导入信息</a></li>
+									<li><a href="exportFilePage.action" >导出信息</a></li>
 								</s:if>
 								<s:elseif test="#session.identity==1">
 									<li><a href="#" >查看学生</a></li>
@@ -144,38 +162,6 @@ DD_belatedPNG.fix('.flash_bar,#tit_fc1,#tit_fc2,#tit_fc3,#tit_fc4,#flashLine,.pn
 
 						</div>
 					</div>
-					<div class="smleftsearch">
-						<!--#begineditable name="全文检索" action="" layout="" tpltype="" contype="" clone="" viewid="136237" contentviewid="" tagname="全文检索"-->
-						<script type="text/javascript">
-							function _nl_ys_check() {
-
-								var keyword = document.getElementById('showkeycode136237').value;
-								if(keyword == null || keyword == "") {
-									alert("请输入你要检索的内容！");
-									return false;
-								}
-								if(window.toFF == 1) {
-									document.getElementById("lucenenewssearchkeyword136237").value = Simplized(keyword);
-								} else {
-									document.getElementById("lucenenewssearchkeyword136237").value = keyword;
-								}
-								var base64 = new Base64();
-								document.getElementById("lucenenewssearchkeyword136237").value = base64.encode(document.getElementById("lucenenewssearchkeyword136237").value);
-								new VsbFormFunc().disableAutoEnable(document.getElementById("showkeycode136237"));
-								return true;
-							}
-						</script>
-						<form action="../search.jsp?wbtreeid=1021" method="post" id="au7a" name="au7a" onsubmit="return _nl_ys_check()" style="display: inline">
-							<input type="hidden" id="lucenenewssearchkeyword136237" name="lucenenewssearchkeyword" value=""><input type="hidden" id="_lucenesearchtype136237" name="_lucenesearchtype" value="1"><input type="hidden" id="searchScope136237" name="searchScope" value="0">
-							<ul class="search">
-								<li style="padding-right: 6px; float: left"><input name="showkeycode" id="showkeycode136237" class="kuang1 png" type="text" /></li>
-								<li style="float: left"><input class="anniu png" type="submit" value="&nbsp;" style="cursor: pointer" /></li>
-							</ul>
-						</form>
-						<script language="javascript" src="system/resource/js/base64.js"></script>
-						<script language="javascript" src="system/resource/js/formfunc.js"></script>
-						<!--#endeditable-->
-					</div>
 					<div class="smleftimfserv">
 						<!--#begineditable name="链接列表-信息服务" action="" layout="" tpltype="" contype="" clone="" viewid="136220" contentviewid="" tagname="链接列表-信息服务"-->
 						<a target="_blank" href="../index/xxfw/bszn1/xsbszn.htm">&nbsp;</a>
@@ -203,213 +189,6 @@ DD_belatedPNG.fix('.flash_bar,#tit_fc1,#tit_fc2,#tit_fc3,#tit_fc4,#flashLine,.pn
 					</div>
 					
 					<div class="sbmaincontent" style="float: right;">
-						<div class="newslist">
-							<!--#begineditable name="静态翻页列表" action="webber.wbst.com.news.ColumnNews" layout="/system/_component/news/list/stattplpagedownv2.jsp" tpltype="1" contype="news" clone="" viewid="136240" contentviewid="" tagname="静态翻页列表"-->
-
-							<script language="javascript" src="system/resource/js/news/statpagedown.js"></script>
-							<ul>
-								<li id="line_u11_0">
-									<A title="关于上报2017-2018-1学期实习实践课程材料的通知" target="_blank" href="../info/1021/5417.htm"><span class="newslistatime">2018-03-20</span><span style="float:left;">关于上报2017-2018-1学期实习实践课程材料的通知</span></A>
-								</li>
-								<li id="line_u11_1">
-									<A title="关于上报2016-2017-1学期实习实践课程材料的通知" target="_blank" href="../info/1021/1861.htm"><span class="newslistatime">2017-03-01</span><span style="float:left;">关于上报2016-2017-1学期实习实践课程材料的通知</span></A>
-								</li>
-								<li id="line_u11_2">
-									<A title="关于上报2015-2016-2学期实习实践课程材料的通知" target="_blank" href="../info/1021/1860.htm"><span class="newslistatime">2016-06-24</span><span style="float:left;">关于上报2015-2016-2学期实习实践课程材料的通知</span></A>
-								</li>
-								<li id="line_u11_3">
-									<A title="关于填报2015-2016学年实习安排的通知" target="_blank" href="../info/1021/1859.htm"><span class="newslistatime">2015-11-24</span><span style="float:left;">关于填报2015-2016学年实习安排的通知</span></A>
-								</li>
-							</ul>
-							<br />
-							<div align="center">
-								<INPUT TYPE="hidden" NAME="actiontype" VALUE=""><input type="hidden" name="_scode_" value="1528438023438"><input type="hidden" name="urltype" value="tree.TreeTempUrl"><input type="hidden" name="wbtreeid" value="1021"><input type="hidden" name="outFlag" value="false">
-								<style type="text/css">
-									.headStyle4cb83oav5v,
-									.headStyle4cb83oav5v td,
-									.headStyle4cb83oav5v div {
-										font-size: 12px;
-										font-family: 宋体;
-										color: #000000;
-										margin-left: auto;
-										margin-right: auto;
-										line-height: 14px;
-									}
-									
-									.defaultButtonStyle {
-										font-size: 12px;
-										font-family: 宋体;
-										height: 20px;
-										color: #000000;
-										BORDER: #AFD5F5 1px solid;
-										margin: 0px;
-										padding: 0px;
-										FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#ffffff, EndColorStr=#BDDBF7);
-										CURSOR: pointer;
-										line-height: 14px;
-										background: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#BDDBF7));
-										background: -moz-linear-gradient( top, #ffffff, #BDDBF7);
-										background: -ms-linear-gradient(top, #ffffff 0%, #bddbf7 100%);
-									}
-									
-									.defaultinputStyle {
-										font-size: 12px;
-										font-family: 宋体;
-										height: 20px;
-										border: 1px solid #AFD5F5;
-										line-height: 14px;
-									}
-									
-									.colHeader {
-										font-size: 12px;
-										font-family: 宋体;
-										line-height: 14px;
-									}
-									
-									.headStyle4cb83oav5v a,
-									.pageList .this-page {
-										font-size: 12px;
-										font-family: 宋体;
-										display: inline-block;
-										height: 14px;
-										padding: 2px 4px;
-										border: solid 1px #AFD5F5;
-										background: #fff;
-										text-decoration: none;
-										MARGIN-RIGHT: 1px;
-										line-height: 14px;
-									}
-									
-									.headStyle4cb83oav5v a:visited {
-										font-size: 12px;
-										font-family: 宋体;
-										color: #000000;
-										text-decoration: none;
-										line-height: 14px;
-									}
-									
-									.headStyle4cb83oav5v .PrevDisabled {
-										font-size: 12px;
-										font-family: 宋体;
-										display: inline-block;
-										height: 14px;
-										margin-right: 3px;
-										padding: 2px 4px;
-										background: #fff;
-										color: #ccc;
-										border: solid 1px #AFD5F5;
-										line-height: 14px;
-									}
-									
-									.headStyle4cb83oav5v .SelectList {
-										font-size: 12px;
-										font-family: 宋体;
-										line-height: 14px;
-									}
-									
-									.headStyle4cb83oav5v .Prev {
-										font-size: 12px;
-										font-family: 宋体;
-										margin-right: 3px;
-										padding: 2px 4px;
-										line-height: 14px;
-									}
-									
-									.headStyle4cb83oav5v .break {
-										font-size: 12px;
-										font-family: 宋体;
-										border: none;
-										text-decoration: none;
-										line-height: 14px;
-									}
-									
-									.headStyle4cb83oav5v .NextDisabled {
-										font-size: 12px;
-										font-family: 宋体;
-										display: inline-block;
-										height: 14px;
-										margin-left: 2px;
-										padding: 2px 4px;
-										background: #fff;
-										color: #ccc;
-										border: solid 1px #AFD5F5;
-										line-height: 14px;
-									}
-									
-									.headStyle4cb83oav5v .Next {
-										font-size: 12px;
-										font-family: 宋体;
-										margin-left: 2px;
-										padding: 2px 4px;
-										line-height: 14px;
-									}
-									
-									.headStyle4cb83oav5v .this-page {
-										font-size: 12px;
-										font-family: 宋体;
-										display: inline-block;
-										height: 14px;
-										padding: 2px 4px;
-										border: solid 1px #AFD5F5;
-										background: #E1F0FD;
-										font-weight: bold;
-										color: black;
-										MARGIN-RIGHT: 1px;
-										line-height: 14px;
-									}
-									
-									.headStyle4cb83oav5v a:hover {
-										font-size: 12px;
-										font-family: 宋体;
-										color: black;
-										background: #EFF7FE;
-										border-color: #AFD5F5;
-										text-decoration: none;
-										line-height: 14px;
-									}
-									
-									.headStyle4cb83oav5v a:link {
-										font-size: 12px;
-										font-family: 宋体;
-										color: #000000;
-										text-decoration: none;
-										line-height: 14px;
-									}
-									
-									.headStyle4cb83oav5v a:active {
-										font-size: 12px;
-										font-family: 宋体;
-										color: black;
-										text-decoration: none;
-										background: #EFF7FE;
-										line-height: 14px;
-									}
-								</style>
-								<script language="javascript" src="system/resource/js/gotopage.js"></script>
-								<script type="text/javascript">
-									function a136240_gopage_fun() {
-										_simple_list_gotopage_fun(1, 'a136240GOPAGE', 2)
-									}
-								</script>
-								<table cellspacing="0" cellpadding="0" border="0">
-									<TR>
-										<td colspan="0">
-											<table cellspacing="0" class="headStyle4cb83oav5v" width="100%" cellpadding="1">
-												<tr valign="middle">
-													<TD nowrap align="left" width="1%" id="fanye136240">共4条&nbsp;&nbsp;1/1&nbsp;</td>
-													<td nowrap align="left">
-														<div><span class="PrevDisabled">首页</span><span class="PrevDisabled">上页</span><span class="NextDisabled">下页</span><span class="NextDisabled">尾页</span></div>
-													</td>
-												</tr>
-											</table>
-								</table>
-							</div>
-							<script>
-								_showDynClickBatch(['dynclicks_u11_5417', 'dynclicks_u11_1861', 'dynclicks_u11_1860', 'dynclicks_u11_1859'], [5417, 1861, 1860, 1859], "wbnews", 1358721784)
-							</script>
-							<!--#endeditable-->
-						</div>
-
 					</div>
 				
 				

@@ -26,11 +26,12 @@ public class TeacherServiceImpl implements TeacherService {
 		// TODO Auto-generated method stub
 
 	}
-
+	@Transactional
 	@Override
 	public List<Teacher> getEntityList(Object o) {
 		// TODO Auto-generated method stub
-		return null;
+		return teacherDao.getEntityList(o);
+		 
 	}
 
 	@Override
@@ -43,6 +44,24 @@ public class TeacherServiceImpl implements TeacherService {
 	public void deleteEntity(Teacher entity) {
 		// TODO Auto-generated method stub
 
+	}
+	@Transactional
+	@Override
+	public void saveTeacherList(List<Teacher> list) {
+		// TODO Auto-generated method stub
+		teacherDao.saveTeacherList(list);
+	}
+	@Transactional
+	@Override
+	public Long count() {
+		// TODO Auto-generated method stub
+		return teacherDao.countTeacher();
+	}
+	@Transactional
+	@Override
+	public List<Teacher> getNotFullTeacher() {
+		// TODO Auto-generated method stub
+		return teacherDao.getNotFullTeacher();
 	}
 
 }

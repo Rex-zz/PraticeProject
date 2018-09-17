@@ -37,8 +37,7 @@ public class Message implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public Message(Admin admin, String title, String content, String file,
-			Integer type, Date date) {
+	public Message(Admin admin, String title, String content, String file, Integer type, Date date) {
 		this.admin = admin;
 		this.title = title;
 		this.content = content;
@@ -59,7 +58,7 @@ public class Message implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "ad_id")
 	public Admin getAdmin() {
 		return this.admin;
@@ -112,6 +111,12 @@ public class Message implements java.io.Serializable {
 
 	public void setDate(Date date) {
 		this.date = date;
+	}
+
+	@Override
+	public String toString() {
+		return "Message [id=" + id + ", admin=" + admin + ", title=" + title + ", content=" + content + ", file=" + file
+				+ ", type=" + type + ", date=" + date + "]";
 	}
 
 }

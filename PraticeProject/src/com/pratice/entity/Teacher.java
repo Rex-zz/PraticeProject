@@ -2,6 +2,8 @@ package com.pratice.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -10,6 +12,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "teacher", catalog = "pratice")
+
 public class Teacher implements java.io.Serializable {
 
 	// Fields
@@ -26,7 +29,7 @@ public class Teacher implements java.io.Serializable {
 	/** default constructor */
 	public Teacher() {
 	}
-
+	
 	/** minimal constructor */
 	public Teacher(String TName, String TTel, String TMajor, String TPassword) {
 		this.TName = TName;
@@ -36,68 +39,75 @@ public class Teacher implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public Teacher(String TName, String TTel, String TMajor, Integer TStunum,
-			String TPassword) {
+	public Teacher(String TId,String TName, String TTel, String TMajor, Integer TStunum, String TPassword) {
+		this.TId=TId;
 		this.TName = TName;
 		this.TTel = TTel;
 		this.TMajor = TMajor;
 		this.TStunum = TStunum;
 		this.TPassword = TPassword;
 	}
-
+	
 	// Property accessors
 	@Id
+
 	@Column(name = "t_id", unique = true, nullable = false, length = 45)
-	public String getId() {
+
+	public String getTId() {
 		return this.TId;
 	}
 
-	public void setId(String TId) {
+	public void setTId(String TId) {
 		this.TId = TId;
 	}
 
 	@Column(name = "t_name", nullable = false, length = 45)
-	public String getName() {
+
+	public String getTName() {
 		return this.TName;
 	}
 
-	public void setName(String TName) {
+	public void setTName(String TName) {
 		this.TName = TName;
 	}
 
 	@Column(name = "t_tel", nullable = false, length = 45)
-	public String getTel() {
+
+	public String getTTel() {
 		return this.TTel;
 	}
 
-	public void setTel(String TTel) {
+	public void setTTel(String TTel) {
 		this.TTel = TTel;
 	}
 
 	@Column(name = "t_major", nullable = false, length = 45)
-	public String getMajor() {
+
+	public String getTMajor() {
 		return this.TMajor;
 	}
 
-	public void setMajor(String TMajor) {
+	public void setTMajor(String TMajor) {
 		this.TMajor = TMajor;
 	}
 
 	@Column(name = "t_stunum")
-	public Integer getStunum() {
+
+	public Integer getTStunum() {
 		return this.TStunum;
 	}
 
-	public void setStunum(Integer TStunum) {
+	public void setTStunum(Integer TStunum) {
 		this.TStunum = TStunum;
 	}
 
 	@Column(name = "t_password", nullable = false, length = 45)
-	public String getPassword() {
+
+	public String getTPassword() {
 		return this.TPassword;
 	}
 
-	public void setPassword(String TPassword) {
+	public void setTPassword(String TPassword) {
 		this.TPassword = TPassword;
 	}
 

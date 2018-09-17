@@ -98,7 +98,7 @@ public class UserAction extends ActionSupport implements RequestAware,
 			break;
 		case "1":
 			Teacher thr = teacherService.getEntityById(id);
-			if (thr != null && thr.getPassword().equals(password)) {
+			if (thr != null && thr.getTPassword().equals(password)) {
 				session.put("user", thr);
 				session.put("identity", type);
 				return SUCCESS;
