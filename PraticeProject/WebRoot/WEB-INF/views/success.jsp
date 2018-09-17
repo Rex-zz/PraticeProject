@@ -24,7 +24,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    成功登录   <br>
-    <s:property value="#session.user.name"/>
+    <div align="center">
+    	<p>成功</p>
+    </div>
   </body>
 </html>

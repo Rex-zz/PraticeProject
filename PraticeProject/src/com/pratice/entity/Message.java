@@ -1,10 +1,14 @@
 package com.pratice.entity;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
+
+import java.util.Date;
+
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -22,9 +26,11 @@ public class Message implements java.io.Serializable {
 
 	private Integer id;
 	private Admin admin;
+	private String title;
 	private String content;
 	private String file;
 	private Integer type;
+	private Date date;
 
 	// Constructors
 
@@ -33,11 +39,13 @@ public class Message implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public Message(Admin admin, String content, String file, Integer type) {
+	public Message(Admin admin, String title, String content, String file, Integer type, Date date) {
 		this.admin = admin;
+		this.title = title;
 		this.content = content;
 		this.file = file;
 		this.type = type;
+		this.date = date;
 	}
 
 	// Property accessors
@@ -54,7 +62,7 @@ public class Message implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "ad_id")
 
 	public Admin getAdmin() {
@@ -63,6 +71,16 @@ public class Message implements java.io.Serializable {
 
 	public void setAdmin(Admin admin) {
 		this.admin = admin;
+	}
+
+	@Column(name = "title", length = 20)
+
+	public String getTitle() {
+		return this.title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	@Column(name = "content", length = 2000)
@@ -93,6 +111,22 @@ public class Message implements java.io.Serializable {
 
 	public void setType(Integer type) {
 		this.type = type;
+	}
+
+	@Column(name = "date", length = 19)
+
+	public Date getDate() {
+		return this.date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	@Override
+	public String toString() {
+		return "Message [id=" + id + ", admin=" + admin + ", title=" + title + ", content=" + content + ", file=" + file
+				+ ", type=" + type + ", date=" + date + "]";
 	}
 
 }
