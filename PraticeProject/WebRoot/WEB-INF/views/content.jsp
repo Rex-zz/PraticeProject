@@ -75,7 +75,7 @@ DD_belatedPNG.fix('.flash_bar,#tit_fc1,#tit_fc2,#tit_fc3,#tit_fc4,#flashLine,.pn
 							通知类型:
 							<c:if test="${requestScope.message.type==0 }">常规通知</c:if>
 							<c:if test="${requestScope.message.type==1 }">重要通知</c:if>
-							 &nbsp;&nbsp;&nbsp;&nbsp;作者：${requestScope.message.admin.name }&nbsp;&nbsp;&nbsp;&nbsp;<a id="return" href="allMessages.action?page=${requestScope.page }">返回</a></div>
+							 &nbsp;&nbsp;&nbsp;&nbsp;作者：${requestScope.message.admin.name }&nbsp;&nbsp;&nbsp;&nbsp;<a id="return" href="allMessages.action?page=${requestScope.page }&msgType=${requestScope.message.type}">返回</a></div>
 							<div class="newscontent">
 								<div id="vsb_content">
 									${requestScope.message.content }

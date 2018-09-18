@@ -1,14 +1,13 @@
 package com.pratice.entity;
 
+import static javax.persistence.GenerationType.IDENTITY;
+
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import static javax.persistence.GenerationType.IDENTITY;
-
-import java.util.Date;
-
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -19,7 +18,6 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "message", catalog = "pratice")
-
 public class Message implements java.io.Serializable {
 
 	// Fields
@@ -51,9 +49,7 @@ public class Message implements java.io.Serializable {
 	// Property accessors
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
-
 	@Column(name = "id", unique = true, nullable = false)
-
 	public Integer getId() {
 		return this.id;
 	}
@@ -64,7 +60,6 @@ public class Message implements java.io.Serializable {
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "ad_id")
-
 	public Admin getAdmin() {
 		return this.admin;
 	}
@@ -74,7 +69,6 @@ public class Message implements java.io.Serializable {
 	}
 
 	@Column(name = "title", length = 20)
-
 	public String getTitle() {
 		return this.title;
 	}
@@ -84,7 +78,6 @@ public class Message implements java.io.Serializable {
 	}
 
 	@Column(name = "content", length = 2000)
-
 	public String getContent() {
 		return this.content;
 	}
@@ -94,7 +87,6 @@ public class Message implements java.io.Serializable {
 	}
 
 	@Column(name = "file", length = 45)
-
 	public String getFile() {
 		return this.file;
 	}
@@ -104,7 +96,6 @@ public class Message implements java.io.Serializable {
 	}
 
 	@Column(name = "type")
-
 	public Integer getType() {
 		return this.type;
 	}
@@ -114,7 +105,6 @@ public class Message implements java.io.Serializable {
 	}
 
 	@Column(name = "date", length = 19)
-
 	public Date getDate() {
 		return this.date;
 	}

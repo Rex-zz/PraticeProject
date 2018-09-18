@@ -1,3 +1,4 @@
+<%@page import="com.pratice.entity.StuDiary"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -25,33 +26,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script src="dfiles/9914/template/default/js/msclass.js" type="text/javascript"></script>
 		<script type="text/javascript" src="dfiles/9914/template/default/js/car.js"></script>
 		<script type="text/javascript" src="dfiles/9914/template/default/js/bdtxk2.js"></script>
-		<script type="text/javascript" src="Jquery/jquery-1.10.2.js"></script>
-		<script type="text/javascript">
-		$(function(){
-				
-				
-				
-				$.ajax({
-					type:"GET",
-					url:"allMessages.action?page=0&msgType=-1",
-					data:new Date(),
-					success:function(data){
-						$("div.sbmaincontent").empty();
-						$("div.sbmaincontent").html(data);
-					}
-				})
-				
-				$("a.admin").click(function(){
-				var url=this.href;
-				var args={"time":new Date()};
-				$.get(url,args,function(data){
-					$("div.sbmaincontent").empty();
-					$("div.sbmaincontent").html(data);
-				},"html")
-				return false;
-				})
-			})
-		</script>
+		
+		<!--IE6透明判断-->
+		<!--[if IE 6]>
+<script src="dfiles/9914/template/default/js/bdtxk1.js"></script>
+<script>
+DD_belatedPNG.fix('.flash_bar,#tit_fc1,#tit_fc2,#tit_fc3,#tit_fc4,#flashLine,.png');
+</script>
+<![endif]-->
+
 		<!--Announced by Visual SiteBuilder 9-->
 		<!-- CustomerNO:77656262657232307b7647545251574103070000 -->
 		<script type="text/javascript" src="system/resource/js/counter.js"></script>
@@ -79,6 +62,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="navdiv">
 					<div class="navul">
 						<ul id="sddm" style="float: right;">
+							<!--#begineditable name="网站导航" action="" layout="" tpltype="" contype="" clone="" viewid="136193" contentviewid="" tagname="网站导航"-->
 							<li >
 								<a onmouseover="mopen('m1036')" onmouseout="mclosetime()" href="http://jxzx.wzu.edu.cn/">
 								当前登陆:<s:if test="#session.identity==2">（管理员）</s:if>
@@ -87,12 +71,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<s:property value="#session.user.name"/></a>
 							</li>
 							<li>
-								<a href="../gzzd.htm">个人中心</a>
+								<a onmouseover="mopen('m1037')" onmouseout="mclosetime()" href="../gzzd.htm">个人中心</a>
 							</li>
 							<li>
-								<a href="login.jsp">注销</a>
+								<a onmouseover="mopen('m1045')" onmouseout="mclosetime()" href="login.jsp">注销</a>
 							</li>
 							
+							<!--#endeditable-->
 						</ul>
 					</div>
 				</div>
@@ -118,13 +103,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<ul>
 								<!--#begineditable name="网站导航-左侧二级" action="" layout="" tpltype="" contype="" clone="" viewid="136230" contentviewid="" tagname="网站导航-左侧二级"-->
 								<li>
-									<a class="admin" href="allMessages.action?page=0&msgType=-1" title="实习见习">查看通知</a>
+									<a href="index.action" title="实习见习">查看通知</a>
 								</li>
 								<s:if test="#session.identity==2">
-									<li><a class="admin" href="messageform.action" >发布通知</a></li>
-									<li><a class="admin" href="userInforPage.action" >查看信息</a></li>
-									<li><a class="admin" href="upload.action" >导入信息</a></li>
-									<li><a class="admin" href="exportFilePage.action" >导出信息</a></li>
+									<li><a href="#" >发布通知</a></li>
+									<li><a href="#" >查看信息</a></li>
+									<li><a href="#" >抽查记录</a></li>
+									<li><a href="#" >导入信息</a></li>
+									<li><a href="#" >导出信息</a></li>
 								</s:if>
 								<s:elseif test="#session.identity==1">
 									<li><a href="#" >查看学生</a></li>
@@ -160,6 +146,38 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 						</div>
 					</div>
+					<div class="smleftsearch">
+						<!--#begineditable name="全文检索" action="" layout="" tpltype="" contype="" clone="" viewid="136237" contentviewid="" tagname="全文检索"-->
+						<script type="text/javascript">
+							function _nl_ys_check() {
+
+								var keyword = document.getElementById('showkeycode136237').value;
+								if(keyword == null || keyword == "") {
+									alert("请输入你要检索的内容！");
+									return false;
+								}
+								if(window.toFF == 1) {
+									document.getElementById("lucenenewssearchkeyword136237").value = Simplized(keyword);
+								} else {
+									document.getElementById("lucenenewssearchkeyword136237").value = keyword;
+								}
+								var base64 = new Base64();
+								document.getElementById("lucenenewssearchkeyword136237").value = base64.encode(document.getElementById("lucenenewssearchkeyword136237").value);
+								new VsbFormFunc().disableAutoEnable(document.getElementById("showkeycode136237"));
+								return true;
+							}
+						</script>
+						<form action="../search.jsp?wbtreeid=1021" method="post" id="au7a" name="au7a" onsubmit="return _nl_ys_check()" style="display: inline">
+							<input type="hidden" id="lucenenewssearchkeyword136237" name="lucenenewssearchkeyword" value=""><input type="hidden" id="_lucenesearchtype136237" name="_lucenesearchtype" value="1"><input type="hidden" id="searchScope136237" name="searchScope" value="0">
+							<ul class="search">
+								<li style="padding-right: 6px; float: left"><input name="showkeycode" id="showkeycode136237" class="kuang1 png" type="text" /></li>
+								<li style="float: left"><input class="anniu png" type="submit" value="&nbsp;" style="cursor: pointer" /></li>
+							</ul>
+						</form>
+						<script language="javascript" src="system/resource/js/base64.js"></script>
+						<script language="javascript" src="system/resource/js/formfunc.js"></script>
+						<!--#endeditable-->
+					</div>
 					<div class="smleftimfserv">
 						<!--#begineditable name="链接列表-信息服务" action="" layout="" tpltype="" contype="" clone="" viewid="136220" contentviewid="" tagname="链接列表-信息服务"-->
 						<a target="_blank" href="../index/xxfw/bszn1/xsbszn.htm">&nbsp;</a>
@@ -173,16 +191,52 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div class="place">
 						<div class="placeright">
 							<!--#begineditable name="当前位置" action="" layout="" tpltype="" contype="" clone="" viewid="136233" contentviewid="" tagname="当前位置"-->
-							
+							<%int isadded=(Integer)session.getAttribute("DiaryAdded"); %>
+							<a href="toAddDiary.action" style="<%if(isadded==1){%>pointer-events: none;<%}else{%>color: red<%}%>;">新增日记</a>
 							<!--#endeditable-->
 						</div>
 						<div class="placeleft">
-							<!--#begineditable name="栏目名称-右侧" action="" layout="" tpltype="" contype="" clone="" viewid="136232" contentviewid="" tagname="栏目名称-右侧"-->实习见习
+							<!--#begineditable name="栏目名称-右侧" action="" layout="" tpltype="" contype="" clone="" viewid="136232" contentviewid="" tagname="栏目名称-右侧"-->日记列表
 							<!--#endeditable-->
 						</div>
 					</div>
 					
 					<div class="sbmaincontent" style="float: right;">
+						<div class="newslist">
+							<!--#begineditable name="静态翻页列表" action="webber.wbst.com.news.ColumnNews" layout="/system/_component/news/list/stattplpagedownv2.jsp" tpltype="1" contype="news" clone="" viewid="136240" contentviewid="" tagname="静态翻页列表"-->
+
+							<script language="javascript" src="system/resource/js/news/statpagedown.js"></script>
+							<s:if test="#session.diaries!=null">
+							<%  List<StuDiary> sd=(List<StuDiary>)session.getAttribute("diaries"); 
+							    int num =sd.size();
+							    int pagenum=7;
+							    int dpage=(Integer)session.getAttribute("diaryPage");
+							    int n=pagenum>(num-((dpage-1)*pagenum-1))?(num):(dpage*pagenum-1);
+							    session.putValue("n", n);%>
+								<ul>
+									<s:iterator value="#session.diaries" var="my" begin="(#session.diaryPage-1)*7" end="#session.n-1">
+										<li>
+											<a href="showDiary.action?did=<s:property value="#my.id"/>"><span class="newslistatime"><s:date name="#my.date" format="yyyy-MM-dd"/></span><span style="float:left;"><s:property value="#my.title"/></span></a>
+										</li>
+									</s:iterator>
+								</ul>
+								<br/>
+								<div align="center">
+									<a class="page" style="<%if(dpage<=1){ %>pointer-events:none;<%}else{ %>color:blue;<%} %>" href="toDiary.action?diaryPage=1">首页</a>&nbsp;&nbsp;&nbsp;
+									<a style="<%if(dpage<=1){ %>pointer-events:none;<%}else{ %>color:blue;<%} %>" href="toDiary.action?diaryPage=<s:property value="#session.diaryPage-1"/>">上一页</a>&nbsp;&nbsp;&nbsp;
+									<font size="3px"><%=dpage %>/<%=(num-1)/pagenum+1 %>&nbsp;&nbsp;&nbsp;</font>
+									<a style="<%if(dpage>=(num-1)/pagenum+1){ %>pointer-events:none;<%}else{ %>color:blue;<%} %>" href="toDiary.action?diaryPage=<s:property value="#session.diaryPage+1"/>">下一页</a>&nbsp;&nbsp;&nbsp;
+									<a style="<%if(dpage>=(num-1)/pagenum+1){ %>pointer-events:none;<%}else{ %>color:blue;<%} %>" href="toDiary.action?diaryPage=<%=(num-1)/pagenum+1%>">尾页</a>
+								</div>
+							</s:if>
+							<br />
+							
+							<script>
+								_showDynClickBatch(['dynclicks_u11_5417', 'dynclicks_u11_1861', 'dynclicks_u11_1860', 'dynclicks_u11_1859'], [5417, 1861, 1860, 1859], "wbnews", 1358721784)
+							</script>
+							<!--#endeditable-->
+						</div>
+
 					</div>
 				
 				

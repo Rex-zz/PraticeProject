@@ -2,9 +2,10 @@ package com.pratice.action;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
+
+import jxl.read.biff.BiffException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -17,7 +18,6 @@ import com.pratice.service.StudentService;
 import com.pratice.service.TeacherService;
 import com.pratice.tools.ExcelTool;
 
-import jxl.read.biff.BiffException;
 @Controller
 @Scope("prototype")
 public class InsertInfoAction extends ActionSupport {
@@ -28,7 +28,8 @@ public class InsertInfoAction extends ActionSupport {
 	private TeacherService teacherService;
 	@Autowired
 	private StudentService studentService;
-	public String insertInfo() throws BiffException, IOException{
+
+	public String insertInfo() throws BiffException, IOException {
 		FileInputStream is = new FileInputStream(upload);
 		switch (type) {
 		case "0":
@@ -42,26 +43,32 @@ public class InsertInfoAction extends ActionSupport {
 		default:
 			return ERROR;
 		}
-		
+
 		return SUCCESS;
 	}
+
 	public String getType() {
 		return type;
 	}
+
 	public void setType(String type) {
 		this.type = type;
 	}
+
 	public File getUpload() {
 		return upload;
 	}
+
 	public void setUpload(File upload) {
 		this.upload = upload;
 	}
+
 	public String getUploadFileName() {
 		return uploadFileName;
 	}
+
 	public void setUploadFileName(String uploadFileName) {
 		this.uploadFileName = uploadFileName;
 	}
-	
+
 }
