@@ -46,12 +46,12 @@ public class FileAction extends ActionSupport {
 		case 0:
 			List<Student> stuList = studentService.getEntityList(null);
 			ExcelTool.exportStudent(baos, stuList);
-			downloadFileName="Ñ§ÉúĞÅÏ¢ÎÄ¼ş.xls";
+			downloadFileName="å­¦ç”Ÿä¿¡æ¯è¡¨.xls";
 			break;
 		case 1:
 			List<Teacher> teaList = teacherService.getEntityList(null);
 			ExcelTool.exportTeacher(baos, teaList);
-			downloadFileName="½ÌÊ¦ĞÅÏ¢ÎÄ¼ş.xls";
+			downloadFileName="æ•™å¸ˆä¿¡æ¯è¡¨.xls";
 			break;
 		default:
 			break;

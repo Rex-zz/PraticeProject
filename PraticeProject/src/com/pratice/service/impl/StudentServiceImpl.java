@@ -2,8 +2,6 @@ package com.pratice.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
@@ -14,6 +12,7 @@ import com.pratice.dao.TeacherDao;
 import com.pratice.entity.Student;
 import com.pratice.entity.Teacher;
 import com.pratice.service.StudentService;
+
 @Service
 @Scope("prototype")
 public class StudentServiceImpl implements StudentService {
@@ -21,11 +20,13 @@ public class StudentServiceImpl implements StudentService {
 	private StudentDao studentDao;
 	@Autowired
 	private TeacherDao teacherDao;
+	
 	@Transactional
 	@Override
 	public Student getEntityById(String id) {
 		return studentDao.getEntityById(id);
 	}
+
 	@Transactional
 	@Override
 	public void saveEntity(Student entity) {

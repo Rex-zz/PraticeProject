@@ -30,12 +30,21 @@ public class MessageAction extends ActionSupport {
 	private File upload;
 	private String uploadFileName;
 	private String uploadContentType;
+	private Integer msgType;
 	@Autowired
 	private MessageService messageService;
 	public String listAllMessage() {
 		HttpServletRequest request = ServletActionContext.getRequest();
-		List<Message> list = messageService.getEntityList(page);
-		Long count=messageService.getCount();
+		List<Message> list=null;
+		Long count=null;
+		if(msgType==-1) {
+			list = messageService.getEntityList(page);
+			count=messageService.getCount(null);
+		}else if(msgType!=null) {
+			list = messageService.getEntityList(page, msgType);
+			count=messageService.getCount(msgType);
+			request.setAttribute("msgType", msgType);
+		}
 		request.setAttribute("listmessages", list);
 		request.setAttribute("count", count);
 		request.setAttribute("pageCount",(int)Math.ceil(count*1.0/15) );
@@ -52,6 +61,7 @@ public class MessageAction extends ActionSupport {
 	}
 	
 	public String pushMsg() throws Exception {
+		System.out.println(message.getContent());
 		HttpSession session = ServletActionContext.getRequest().getSession();
 		Admin admin = (Admin) session.getAttribute("user");
 		message.setAdmin(admin);
@@ -124,6 +134,14 @@ public class MessageAction extends ActionSupport {
 
 	public void setUploadContentType(String uploadContentType) {
 		this.uploadContentType = uploadContentType;
+	}
+
+	public Integer getMsgType() {
+		return msgType;
+	}
+
+	public void setMsgType(Integer msgType) {
+		this.msgType = msgType;
 	}
 	
 	

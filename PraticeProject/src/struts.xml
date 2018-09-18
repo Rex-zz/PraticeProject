@@ -3,13 +3,58 @@
 <struts>
 	<constant name="struts.devMode" value="false" />
 	<package name="praticeProject" extends="struts-default">
-		
+		<action name='index' class="com.pratice.action.StudentAction">
+			<result>/WEB-INF/views/index.jsp</result>
+		</action>
 		<action name="helloword" class="com.pratice.action.Test" method="test">
 			<result name="success">/WEB-INF/views/success.jsp</result>
 		</action>
 		<action name="login" class="com.pratice.action.UserAction" method="login">
 			<result>/WEB-INF/views/index.jsp</result>
 			<result name="error">/login.jsp</result>
+		</action>
+		<action name="toIntention" class="com.pratice.action.StudentAction" method="toIntent">
+			<result>/WEB-INF/views/intention.jsp</result>
+		</action>
+		<action name="intention" class="com.pratice.action.StudentAction" method="intention">
+			<result>/WEB-INF/views/index.jsp</result>
+		</action>
+		<action name="toPractice" class="com.pratice.action.StudentAction" method="toPractice">
+			<result>/WEB-INF/views/stupractice.jsp</result>
+		</action>
+		<action name="practice" class="com.pratice.action.StudentAction" method="practice">
+			<result>/WEB-INF/views/index.jsp</result>
+		</action>
+		<action name="toDiary" class="com.pratice.action.StudentAction" method="toDiary">
+			<result>/WEB-INF/views/diary.jsp</result>
+		</action>
+		<action name="toAddDiary" class="com.pratice.action.StudentAction" method="toAddDiary">
+			<result>/WEB-INF/views/addDiary.jsp</result>
+		</action>
+		<action name="addDiary" class="com.pratice.action.StudentAction" method="addDiary">
+			<result type="redirectAction">
+				<param name="actionName">toDiary</param>
+			</result>
+		</action>
+		<action name="showDiary" class="com.pratice.action.StudentAction" method="showDiary">
+			<result>/WEB-INF/views/showDiary.jsp</result>
+		</action>
+		<action name="updateDiary" class="com.pratice.action.StudentAction" method="updateDiary">
+			<result type="redirectAction">
+				<param name="actionName">toDiary</param>
+			</result>
+		</action>
+		<action name="toReport" class="com.pratice.action.StudentAction" method="toReport">
+			<result>/WEB-INF/views/stuReport.jsp</result>
+		</action>
+		<action name="toSummary" class="com.pratice.action.StudentAction" method="toSummary">
+			<result>/WEB-INF/views/stuSummary.jsp</result>
+		</action>
+		<action name="stuReport" class="com.pratice.action.StudentAction" method="stuReport">
+			<result>/WEB-INF/views/index.jsp</result>
+		</action>
+		<action name="stuSummary" class="com.pratice.action.StudentAction" method="stuSummary">
+			<result>/WEB-INF/views/index.jsp</result>
 		</action>
 		<action name="allMessages" class="com.pratice.action.MessageAction" method="listAllMessage">
 			<result>/WEB-INF/views/msglist.jsp</result>

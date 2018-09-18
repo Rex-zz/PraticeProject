@@ -28,6 +28,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script type="text/javascript" src="Jquery/jquery-1.10.2.js"></script>
 		<script type="text/javascript">
 			$(function(){
+				var msgType="${requestScope.msgType}"
+				if(msgType==-1){
+					return false;
+				}else if(msgType==0){
+					$('input.msgType[value="0"]').attr("checked",true);
+				}else if(msgType==1){
+				$('input.msgType[value="1"]').attr("checked",true);
+				}else if(msgType==2){
+					$('input.msgType[value="2"]').attr("checked",true);
+				}
+			})
+		</script>
+		<script type="text/javascript">
+			$(function(){
+				
 				$('a.Next,a.Prev').click(function(){
 					var url=this.href;
 					var args={"time":new Date()};
@@ -46,6 +61,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					},"html")
 					return false;
 				})
+				$('input.msgType').click(function(){
+					var msgType=this.value;
+					var url="allMessages.action?page=0&msgType="+msgType;
+					$.ajax({
+						type:"GET",
+						url:url,
+						success:function(data){
+							$("div.sbmaincontent").empty();
+							$("div.sbmaincontent").html(data);
+						}
+					})
+				})
 			})
 		</script>
 		
@@ -60,8 +87,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    
+    			
 					<div class="sbmaincontent">
+						<div><input type="radio" class="msgType" name="msgType" value="0"/>全体通知 
+							<input type="radio"	class="msgType" name="msgType" value="1"/>实习期通知 
+							<input type="radio" class="msgType" name="msgType" value="2"/>岗位信息 
+						</div>
 						<div class="newslist">
 							<!--#begineditable name="静态翻页列表" action="webber.wbst.com.news.ColumnNews" layout="/system/_component/news/list/stattplpagedownv2.jsp" tpltype="1" contype="news" clone="" viewid="136240" contentviewid="" tagname="静态翻页列表"-->
 
@@ -267,15 +298,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<span class="PrevDisabled">首页</span><span class="PrevDisabled">上页</span>
 														</c:if>
 														<c:if test="${requestScope.page!=0 }">
-															<a class="Prev" href="allMessages.action?page=0">首页</a>
-															<a class="Prev" href="allMessages.action?page=${requestScope.page-1 }">上页</a>
+															<a class="Prev" href="allMessages.action?page=0&msgType=${requestScope.msgType}">首页</a>
+															<a class="Prev" href="allMessages.action?page=${requestScope.page-1 }&msgType=${requestScope.msgType}">上页</a>
 														</c:if>
 														<c:if test="${requestScope.page+1== requestScope.pageCount}">
 															<span class="NextDisabled">下页</span><span class="NextDisabled">尾页</span>
 														</c:if>
 														<c:if test="${requestScope.page+1!= requestScope.pageCount}">
-															<a class="Next" href="allMessages.action?page=${requestScope.page+1 }">下页</a>
-															<a class="Next" href="allMessages.action?page=${requestScope.pageCount-1 }">尾页</a>
+															<a class="Next" href="allMessages.action?page=${requestScope.page+1 }&msgType=${requestScope.msgType}">下页</a>
+															<a class="Next" href="allMessages.action?page=${requestScope.pageCount-1 }&msgType=${requestScope.msgType}">尾页</a>
 														</c:if>
 														</div>
 													</td>
@@ -283,9 +314,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 											</table>
 								</table>
 							</div>
-							<script>
-								_showDynClickBatch(['dynclicks_u11_5417', 'dynclicks_u11_1861', 'dynclicks_u11_1860', 'dynclicks_u11_1859'], [5417, 1861, 1860, 1859], "wbnews", 1358721784)
-							</script>
 							<!--#endeditable-->
 						</div>
 

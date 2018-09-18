@@ -3,6 +3,7 @@ package com.pratice.dao.impl;
 import java.util.List;
 
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
 import com.pratice.dao.MessageDao;
@@ -43,11 +44,30 @@ public class MessageDaoImpl extends BaseSessionFactory implements MessageDao {
 	}
 
 	@Override
-	public Long getCount() {
-		// TODO Auto-generated method stub
-		String sql="select count(*) from Message";
-		return (Long) getSession().createQuery(sql).uniqueResult();
+	public Long getCount(Integer type) {
+		String sql=null;
+		Query query=null;
+		if(type==null) {
+			sql="select count(*) from Message";
+			query = getSession().createQuery(sql);
+		}else {
+			sql="select count(*) from Message m where m.type=:type";
+			query = getSession().createQuery(sql).setParameter("type", type);
+		}
+			
+		return (Long) query.uniqueResult();
 		
+	}
+
+	@Override
+	public List<Message> getEntityList(Object page, Integer type) {
+		// TODO Auto-generated method stub
+		String sql="from Message m where m.type=:type order by m.date desc";
+		return getSession()
+				.createQuery(sql)
+				.setParameter("type", type)			
+				.setFirstResult(((int) page)*15)
+				.setMaxResults(15).list();
 	}
 	
 }
