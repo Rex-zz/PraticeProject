@@ -46,9 +46,15 @@ public class MessageServiceImpl implements MessageService {
 	}
 	@Transactional
 	@Override
-	public Long getCount() {
+	public Long getCount(Integer type) {
 		// TODO Auto-generated method stub
-		return messageDao.getCount();
+		return messageDao.getCount(type);
+	}
+	@Transactional
+	@Override
+	public List<Message> getEntityList(Object page, Integer type) {
+		// TODO Auto-generated method stub
+		return messageDao.getEntityList(page,type);
 	}
 
 }

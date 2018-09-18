@@ -33,7 +33,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				
 				$.ajax({
 					type:"GET",
-					url:"allMessages.action?page=0",
+					url:"allMessages.action?page=0&msgType=-1",
 					data:new Date(),
 					success:function(data){
 						$("div.sbmaincontent").empty();
@@ -41,7 +41,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					}
 				})
 				
-				$("a").click(function(){
+				$("a.admin").click(function(){
 				var url=this.href;
 				var args={"time":new Date()};
 				$.get(url,args,function(data){
@@ -79,7 +79,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="navdiv">
 					<div class="navul">
 						<ul id="sddm" style="float: right;">
-							<!--#begineditable name="网站导航" action="" layout="" tpltype="" contype="" clone="" viewid="136193" contentviewid="" tagname="网站导航"-->
 							<li >
 								<a onmouseover="mopen('m1036')" onmouseout="mclosetime()" href="http://jxzx.wzu.edu.cn/">
 								当前登陆:<s:if test="#session.identity==2">（管理员）</s:if>
@@ -94,7 +93,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<a href="login.jsp">注销</a>
 							</li>
 							
-							<!--#endeditable-->
 						</ul>
 					</div>
 				</div>
@@ -120,13 +118,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<ul>
 								<!--#begineditable name="网站导航-左侧二级" action="" layout="" tpltype="" contype="" clone="" viewid="136230" contentviewid="" tagname="网站导航-左侧二级"-->
 								<li>
-									<a href="allMessages.action?page=0" title="实习见习">查看通知</a>
+									<a class="admin" href="allMessages.action?page=0&msgType=-1" title="实习见习">查看通知</a>
 								</li>
 								<s:if test="#session.identity==2">
-									<li><a href="messageform.action" >发布通知</a></li>
-									<li><a href="userInforPage.action" >查看信息</a></li>
-									<li><a href="upload.action" >导入信息</a></li>
-									<li><a href="exportFilePage.action" >导出信息</a></li>
+									<li><a class="admin" href="messageform.action" >发布通知</a></li>
+									<li><a class="admin" href="userInforPage.action" >查看信息</a></li>
+									<li><a class="admin" href="upload.action" >导入信息</a></li>
+									<li><a class="admin" href="exportFilePage.action" >导出信息</a></li>
 								</s:if>
 								<s:elseif test="#session.identity==1">
 									<li><a href="#" >查看学生</a></li>
@@ -175,11 +173,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div class="place">
 						<div class="placeright">
 							<!--#begineditable name="当前位置" action="" layout="" tpltype="" contype="" clone="" viewid="136233" contentviewid="" tagname="当前位置"-->
-							<a href="../index.htm">网站首页</a>
-							&gt;
-							<a href="../_xsxyfzzdzx.htm"> 学生学业发展指导中心</a>
-							&gt;
-							<a href="sxjx.htm">实习见习</a>
+							
 							<!--#endeditable-->
 						</div>
 						<div class="placeleft">

@@ -20,7 +20,7 @@ public class StudentServiceImpl implements StudentService {
 	private StudentDao studentDao;
 	@Autowired
 	private TeacherDao teacherDao;
-	
+
 	@Transactional
 	@Override
 	public Student getEntityById(String id) {
@@ -33,6 +33,7 @@ public class StudentServiceImpl implements StudentService {
 		// TODO Auto-generated method stub
 		studentDao.saveEntity(entity);
 	}
+
 	@Transactional
 	@Override
 	public List<Student> getEntityList(Object o) {
@@ -40,33 +41,38 @@ public class StudentServiceImpl implements StudentService {
 		return studentDao.getEntityList(o);
 	}
 
+	@Transactional
 	@Override
 	public void updateEntity(Student entity) {
 		// TODO Auto-generated method stub
+		studentDao.updateEntity(entity);
 	}
 
 	@Override
 	public void deleteEntity(Student entity) {
 		// TODO Auto-generated method stub
 	}
+
 	@Transactional
 	@Override
 	public void saveStudentList(List<Student> list) {
 		// TODO Auto-generated method stub
 		studentDao.saveStudentList(list);
 	}
+
 	@Transactional
 	@Override
 	public Long count() {
 		// TODO Auto-generated method stub
 		return studentDao.countStudent();
 	}
+
 	@Transactional
 	@Override
 	public void updateStudentTutor(Student stu) {
 		// TODO Auto-generated method stub
 		Teacher teacher = teacherDao.getEntityById(stu.getTutor());
-		teacher.setTStunum(teacher.getTStunum()+1);
+		teacher.setTStunum(teacher.getTStunum() + 1);
 		teacherDao.updateEntity(teacher);
 		stu.setTutor(teacher.getTName());
 		studentDao.updateEntity(stu);

@@ -3,7 +3,9 @@
 <struts>
 	<constant name="struts.devMode" value="false" />
 	<package name="praticeProject" extends="struts-default">
-		
+		<action name='index' class="com.pratice.action.StudentAction">
+			<result>/WEB-INF/views/index.jsp</result>
+		</action>
 		<action name="helloword" class="com.pratice.action.Test" method="test">
 			<result name="success">/WEB-INF/views/success.jsp</result>
 		</action>
@@ -16,12 +18,14 @@
 		</action>
 		<action name="intention" class="com.pratice.action.StudentAction" method="intention">
 			<result>/WEB-INF/views/index.jsp</result>
+			<result name="error">/WEB-INF/views/intention.jsp</result>
 		</action>
 		<action name="toPractice" class="com.pratice.action.StudentAction" method="toPractice">
 			<result>/WEB-INF/views/stupractice.jsp</result>
 		</action>
 		<action name="practice" class="com.pratice.action.StudentAction" method="practice">
 			<result>/WEB-INF/views/index.jsp</result>
+			<result name="error">/WEB-INF/views/stupractice.jsp</result>
 		</action>
 		<action name="toDiary" class="com.pratice.action.StudentAction" method="toDiary">
 			<result>/WEB-INF/views/diary.jsp</result>

@@ -79,13 +79,27 @@ public class StudentAction extends ActionSupport implements RequestAware,
 	}
 
 	public String intention() {
+		if (id == "" || name == "" || tel == "") {
+			request.put("error", "有内容为空！已初始化");
+			return ERROR;
+		}
+		HttpServletRequest request = (HttpServletRequest) ActionContext
+				.getContext().get(StrutsStatics.HTTP_REQUEST);
+		HttpSession se = request.getSession();
+		Student st = (Student) se.getAttribute("user");
 		StuIntention sti = new StuIntention();
 		sti.setSId(id);
+		st.setSId(id);
 		sti.setSName(name);
+		st.setName(name);
 		sti.setSSex(sex);
+		st.setSex(sex);
 		sti.setSTel(tel);
+		st.setTel(tel);
 		sti.setSInMode(way);
 		session.put("intention", 1);
+		studentService.updateEntity(st);
+		session.put("user", st);
 		if (stuIntentionService.getEntityBySid(id) != null) {
 			StuIntention si = stuIntentionService.getEntityBySid(id);
 			sti.setId(si.getId());
@@ -114,13 +128,34 @@ public class StudentAction extends ActionSupport implements RequestAware,
 	}
 
 	public String practice() {
+		if (id == "" || name == "" || tel == "" || pra == "" || job == ""
+				|| start == null || end == null) {
+			request.put("error", "有内容为空！已初始化");
+			return ERROR;
+		}
+		if (new SimpleDateFormat("yyyy--MM-dd").format(start).compareTo(
+				new SimpleDateFormat("yyyy--MM-dd").format(end)) > 0) {
+			request.put("error", "开始时间超过结束时间！已初始化");
+			return ERROR;
+		}
+		HttpServletRequest request = (HttpServletRequest) ActionContext
+				.getContext().get(StrutsStatics.HTTP_REQUEST);
+		HttpSession se = request.getSession();
+		Student st = (Student) se.getAttribute("user");
 		StuPractice sp = new StuPractice();
 		sp.setSId(id);
+		st.setSId(id);
+		st.setName(name);
+		st.setTel(tel);
 		sp.setSPraName(pra);
 		sp.setSJob(job);
 		sp.setSStartdate(start);
 		sp.setSEnddate(end);
+		studentService.updateEntity(st);
+		session.put("user", st);
 		session.put("practiced", 1);
+		session.put("start", new SimpleDateFormat("yyyy-MM-dd").format(start));
+		session.put("end", new SimpleDateFormat("yyyy-MM-dd").format(end));
 		stuPracticeService.saveEntity(sp);
 		return SUCCESS;
 	}
@@ -131,7 +166,17 @@ public class StudentAction extends ActionSupport implements RequestAware,
 		HttpSession se = request.getSession();
 		Student st = (Student) se.getAttribute("user");
 		List<StuDiary> diaries = stuDiaryService.getEntityList(st.getSId());
-		if (diaries != null) {
+		SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
+		String starttime = sf.format(stuPracticeService.getEntityById(
+				st.getSId()).getSStartdate());
+		String endtime = sf.format(stuPracticeService
+				.getEntityById(st.getSId()).getSEnddate());
+		String now = sf.format(new Date()).substring(0, 10);
+		if (now.compareTo(starttime) >= 0 && now.compareTo(endtime) <= 0)
+			session.put("DiaryAdded", 0);
+		else
+			session.put("DiaryAdded", 1);
+		if (diaries.size() > 0) {
 			session.put("diaries", diaries);
 			int pagenum = 7;
 			if (diaryPage < 1)
@@ -139,11 +184,9 @@ public class StudentAction extends ActionSupport implements RequestAware,
 			if (diaryPage > (diaries.size() - 1) / pagenum + 1)
 				diaryPage = (diaries.size() - 1) / pagenum + 1;
 			session.put("diaryPage", diaryPage);
-			SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
 			String last = diaries.get(0).getDate().toString().substring(0, 10);
 			String end = stuPracticeService.getEntityById(st.getSId())
 					.getSEnddate().toString();
-			String now = sf.format(new Date()).substring(0, 10);
 			if (last.compareTo(now) >= 0 || end.compareTo(now) < 0)
 				DiaryAdded = 1;
 			else
@@ -163,7 +206,7 @@ public class StudentAction extends ActionSupport implements RequestAware,
 		HttpSession se = request.getSession();
 		Student st = (Student) se.getAttribute("user");
 		StuDiary sd = new StuDiary();
-		sd.setStuId(Integer.parseInt(st.getSId()));
+		sd.setStuId(st.getSId());
 		sd.setStuClass(st.getClass_());
 		sd.setStuName(st.getName());
 		sd.setStuMajor(st.getMajor());

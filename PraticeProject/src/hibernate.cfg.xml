@@ -6,8 +6,6 @@
 <hibernate-configuration>
 
 <session-factory>
-	<property name="show_sql">true</property>
-	<property name="format_sql">true</property>
 	<property name="jdbc.batch_size">50</property>
 
 </session-factory>

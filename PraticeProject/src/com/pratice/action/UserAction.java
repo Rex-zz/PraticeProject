@@ -61,7 +61,7 @@ public class UserAction extends ActionSupport implements RequestAware,
 		session.remove("summary");
 		session.remove("report");
 		if (id == "" || password == "") {
-			request.put("error", "ÕË»§Ãû»òÃÜÂëÎª¿Õ");
+			request.put("error", "è´¦å·å¯†ç ä¸èƒ½ä¸ºç©ºï¼");
 			return ERROR;
 		}
 		switch (type) {
@@ -113,7 +113,7 @@ public class UserAction extends ActionSupport implements RequestAware,
 			}
 			break;
 		}
-		request.put("error", "ÕË»§Ãû»òÃÜÂë´íÎó");
+		request.put("error", "è´¦å·å¯†ç é”™è¯¯ï¼");
 		return ERROR;
 	}
 

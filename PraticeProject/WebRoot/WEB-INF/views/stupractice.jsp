@@ -25,6 +25,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script src="dfiles/9914/template/default/js/msclass.js" type="text/javascript"></script>
 		<script type="text/javascript" src="dfiles/9914/template/default/js/car.js"></script>
 		<script type="text/javascript" src="dfiles/9914/template/default/js/bdtxk2.js"></script>
+		<script type="text/javascript" src="Jquery/jquery-1.10.2.js"></script>
+		
 		<!--IE6透明判断-->
 		<!--[if IE 6]>
 <script src="dfiles/9914/template/default/js/bdtxk1.js"></script>
@@ -99,7 +101,7 @@ DD_belatedPNG.fix('.flash_bar,#tit_fc1,#tit_fc2,#tit_fc3,#tit_fc4,#flashLine,.pn
 							<ul>
 								<!--#begineditable name="网站导航-左侧二级" action="" layout="" tpltype="" contype="" clone="" viewid="136230" contentviewid="" tagname="网站导航-左侧二级"-->
 								<li>
-									<a href="#" title="实习见习">查看通知</a>
+									<a href="index.action" title="实习见习">查看通知</a>
 								</li>
 								<s:if test="#session.identity==2">
 									<li><a href="#" >发布通知</a></li>
@@ -204,10 +206,11 @@ DD_belatedPNG.fix('.flash_bar,#tit_fc1,#tit_fc2,#tit_fc3,#tit_fc4,#flashLine,.pn
 							
 							<br />
 							<div align="center">
-								<form action="practice.action" method="post">
+								<% if(request.getAttribute("error")!=null) {%><h6 style="color: red;"><%=request.getAttribute("error") %></h6><%} %>
+								<form id="pratice" action="practice.action" method="post">
 									学号：<input type="text" name="id" value="<s:property value="#session.user.sid"/>"/><br />
-									姓名：<input type="text" value="<s:property value="#session.user.name"/>"/><br />
-									联系方式：<input type="text" value="<s:property value="#session.user.tel"/>"/><br />
+									姓名：<input type="text" name="name" value="<s:property value="#session.user.name"/>"/><br />
+									联系方式：<input type="text" name="tel" value="<s:property value="#session.user.tel"/>"/><br />
 									实习单位：<input type="text" name="pra" value="<s:property value="#session.stupra.spraname"/>"/><br/>
 									实习岗位：<input type="text" name="job" value="<s:property value="#session.stupra.sjob"/>"/><br/>
 									实习开始时间：<input type="date" name="start" value="<s:property value="#session.startdate"/>"/><br/>

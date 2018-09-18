@@ -77,6 +77,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    							通知类型<br>
    							<input type="radio" class="msgType" name="message.type" value="0" checked="true"/> 全体通知
    							<input type="radio" class="msgType" name="message.type" value="1"/> 实习期通知
+   							<input type="radio" class="msgType" name="message.type" value="2"/>岗位信息 
    							<br><br>
    							文件:<input type="file" name="upload" /><br><br>
    							<input type="submit" value="提交"/>
