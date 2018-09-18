@@ -20,7 +20,6 @@ public class StudentServiceImpl implements StudentService {
 	private StudentDao studentDao;
 	@Autowired
 	private TeacherDao teacherDao;
-
 	@Transactional
 	@Override
 	public Student getEntityById(String id) {
