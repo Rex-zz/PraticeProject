@@ -20,7 +20,7 @@ public class StuDiary implements java.io.Serializable {
 	// Fields
 
 	private Integer id;
-	private Integer stuId;
+	private String stuId;
 	private String stuName;
 	private String stuClass;
 	private String stuMajor;
@@ -36,7 +36,7 @@ public class StuDiary implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public StuDiary(Integer stuId, String stuName, String stuClass,
+	public StuDiary(String stuId, String stuName, String stuClass,
 			String stuMajor, String stuInstitute, Date date, String content) {
 		this.stuId = stuId;
 		this.stuName = stuName;
@@ -60,11 +60,11 @@ public class StuDiary implements java.io.Serializable {
 	}
 
 	@Column(name = "stu_id")
-	public Integer getStuId() {
+	public String getStuId() {
 		return this.stuId;
 	}
 
-	public void setStuId(Integer stuId) {
+	public void setStuId(String stuId) {
 		this.stuId = stuId;
 	}
 

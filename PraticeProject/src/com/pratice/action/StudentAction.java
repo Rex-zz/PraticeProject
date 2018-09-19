@@ -79,13 +79,27 @@ public class StudentAction extends ActionSupport implements RequestAware,
 	}
 
 	public String intention() {
+		if (id == "" || name == "" || tel == "") {
+			request.put("error", "有内容为空！已初始化");
+			return ERROR;
+		}
+		HttpServletRequest request = (HttpServletRequest) ActionContext
+				.getContext().get(StrutsStatics.HTTP_REQUEST);
+		HttpSession se = request.getSession();
+		Student st = (Student) se.getAttribute("user");
 		StuIntention sti = new StuIntention();
 		sti.setSId(id);
+		st.setSId(id);
 		sti.setSName(name);
+		st.setName(name);
 		sti.setSSex(sex);
+		st.setSex(sex);
 		sti.setSTel(tel);
+		st.setTel(tel);
 		sti.setSInMode(way);
 		session.put("intention", 1);
+		studentService.updateEntity(st);
+		session.put("user", st);
 		if (stuIntentionService.getEntityBySid(id) != null) {
 			StuIntention si = stuIntentionService.getEntityBySid(id);
 			sti.setId(si.getId());
@@ -114,12 +128,31 @@ public class StudentAction extends ActionSupport implements RequestAware,
 	}
 
 	public String practice() {
+		if (id == "" || name == "" || tel == "" || pra == "" || job == ""
+				|| start == null || end == null) {
+			request.put("error", "有内容为空！已初始化");
+			return ERROR;
+		}
+		if (new SimpleDateFormat("yyyy--MM-dd").format(start).compareTo(
+				new SimpleDateFormat("yyyy--MM-dd").format(end)) > 0) {
+			request.put("error", "开始时间超过结束时间！已初始化");
+			return ERROR;
+		}
+		HttpServletRequest request = (HttpServletRequest) ActionContext
+				.getContext().get(StrutsStatics.HTTP_REQUEST);
+		HttpSession se = request.getSession();
+		Student st = (Student) se.getAttribute("user");
 		StuPractice sp = new StuPractice();
 		sp.setSId(id);
+		st.setSId(id);
+		st.setName(name);
+		st.setTel(tel);
 		sp.setSPraName(pra);
 		sp.setSJob(job);
 		sp.setSStartdate(start);
 		sp.setSEnddate(end);
+		studentService.updateEntity(st);
+		session.put("user", st);
 		session.put("practiced", 1);
 		session.put("start", new SimpleDateFormat("yyyy-MM-dd").format(start));
 		session.put("end", new SimpleDateFormat("yyyy-MM-dd").format(end));
@@ -171,7 +204,7 @@ public class StudentAction extends ActionSupport implements RequestAware,
 		HttpSession se = request.getSession();
 		Student st = (Student) se.getAttribute("user");
 		StuDiary sd = new StuDiary();
-		sd.setStuId(Integer.parseInt(st.getSId()));
+		sd.setStuId(st.getSId());
 		sd.setStuClass(st.getClass_());
 		sd.setStuName(st.getName());
 		sd.setStuMajor(st.getMajor());
