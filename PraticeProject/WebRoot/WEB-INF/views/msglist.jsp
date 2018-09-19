@@ -109,6 +109,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										<s:if test="type==1">
 										[实习期通知]
 										</s:if>
+										<s:if test="type==2">
+										[岗位信息]
+										</s:if>
 										${title }
 										
 										</span></a>

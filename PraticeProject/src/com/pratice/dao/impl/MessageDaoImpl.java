@@ -34,13 +34,13 @@ public class MessageDaoImpl extends BaseSessionFactory implements MessageDao {
 	@Override
 	public void updateEntity(Message entity) {
 		// TODO Auto-generated method stub
-
+		getSession().update(entity);
 	}
 
 	@Override
 	public void deleteEntity(Message entity) {
 		// TODO Auto-generated method stub
-
+		getSession().delete(entity);
 	}
 
 	@Override

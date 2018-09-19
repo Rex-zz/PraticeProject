@@ -33,16 +33,17 @@ public class MessageServiceImpl implements MessageService {
 		return messageDao.getEntityList(o);
 	}
 
+	@Transactional
 	@Override
 	public void updateEntity(Message entity) {
 		// TODO Auto-generated method stub
-
+		messageDao.updateEntity(entity);
 	}
-
+	@Transactional
 	@Override
 	public void deleteEntity(Message entity) {
 		// TODO Auto-generated method stub
-
+		messageDao.deleteEntity(entity);
 	}
 	@Transactional
 	@Override

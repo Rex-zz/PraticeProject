@@ -99,6 +99,18 @@
 		<action name="exportFilePage" class="com.pratice.action.FileAction" method="exportFilePage">
 			<result>/WEB-INF/views/user_info_export.jsp</result>
 		</action>
+		<action name="deleteMessage" class="com.pratice.action.MessageAction" method="deleteMessage">
+			<interceptor-ref name="paramsPrepareParamsStack"></interceptor-ref>
+			<result>/WEB-INF/views/success.jsp</result>
+		</action>
+		<action name="getEditForm" class="com.pratice.action.MessageAction" method="getEditForm">
+			<interceptor-ref name="paramsPrepareParamsStack"></interceptor-ref>
+			<result>/WEB-INF/views/editMessageForm.jsp</result>
+		</action>
+		<action name="updateMessage" class="com.pratice.action.MessageAction" method="updateMessage">
+			<interceptor-ref name="paramsPrepareParamsStack"></interceptor-ref>
+			<result>/WEB-INF/views/success.jsp</result>
+		</action>
 	</package>
 	
 	

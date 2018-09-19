@@ -27,15 +27,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script type="text/javascript" src="Jquery/jquery-1.10.2.js"></script>
 		<script type="text/javascript">
 			$(function(){
-				$("a#return").click(function(){
+				$("a#return,a#deleteMessage,a#enditMessage").click(function(){
 					var url=this.href;
-					var args={"time":new Date()};
-					$.get(url,args,function(data){
+					
+					$.get(url,null,function(data){
 					$("div.sbmaincontent").empty();
 					$("div.sbmaincontent").html(data)
 					},"html")
 				return false;
 				})
+				
 			})
 		</script>
 		<style>
@@ -75,7 +76,11 @@ DD_belatedPNG.fix('.flash_bar,#tit_fc1,#tit_fc2,#tit_fc3,#tit_fc4,#flashLine,.pn
 							通知类型:
 							<c:if test="${requestScope.message.type==0 }">常规通知</c:if>
 							<c:if test="${requestScope.message.type==1 }">重要通知</c:if>
-							 &nbsp;&nbsp;&nbsp;&nbsp;作者：${requestScope.message.admin.name }&nbsp;&nbsp;&nbsp;&nbsp;<a id="return" href="allMessages.action?page=${requestScope.page }&msgType=${requestScope.message.type}">返回</a></div>
+							 &nbsp;&nbsp;&nbsp;&nbsp;作者：${requestScope.message.admin.name }&nbsp;&nbsp;&nbsp;&nbsp;
+							 <a id="return" href="allMessages.action?page=${requestScope.page }&msgType=${requestScope.message.type}">返回</a>
+							 <a id="enditMessage" href="getEditForm.action?id=${requestScope.message.id }">编辑</a>
+							 <a id="deleteMessage" href="deleteMessage.action?id=${requestScope.message.id }">删除</a>
+							 </div>
 							<div class="newscontent">
 								<div id="vsb_content">
 									${requestScope.message.content }

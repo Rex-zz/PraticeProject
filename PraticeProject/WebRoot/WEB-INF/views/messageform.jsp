@@ -27,12 +27,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script type="text/javascript">
 			$(function(){
 				$("#msgform").submit(function(){
-				debugger
 					var title=document.getElementById("title").value;
 					if(title==""||title==null){
 						$("#error").html("标题不能为空")
 					return false
 					}
+					$("#ckeditor").val(CKEDITOR.instances.ckeditor.getData());
 					var msgform = new FormData($("#msgform")[0]);
 					$.ajax({
 						type:'POST',

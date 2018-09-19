@@ -39,13 +39,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					aoColumnDefs=[
                 		{"aTargets":[6],"mRender":function(data,type,row,meta){
                 		if(data=="未指定")
-                			return "<a class='uid' row='"+meta.row+"' onclick='test(this)'><p style='color:red'>"+data+"</p></a>";
+                			return "<a class='uid' row='"+meta.row+"><p style='color:red'>"+data+"</p></a>";
                 		return data;
                 		}}];
 				}else if(type==1){
 					url="teachersInfo.action";
 					userColumns=[{data:"TId"},{data:"TName"},{data:"TTel"},{data:"TMajor"},{data:"TStunum"}];
-					aoColumnDefs=null;
+					aoColumnDefs=[{"aTargets":[4],"mRender":function(data,type,row,meta){
+						if(data<10){
+							return "<a row='"+meta.row+"' onclick='stusOfTea(this)'><p style='color:green'>"+data+"</p></a>";
+						}else{
+							return "<a row='"+meta.row+"' onclick='stusOfTea(this)'><p style='color:red'>"+data+"</p></a>";
+						}
+					}}];
 				}
 				
 				 $("#usertable").DataTable({
@@ -69,22 +75,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			var stu=null;
 			var rowIndex=null;
 			var table=null;
-				function test(a){
-					this.rowIndex=$(a).attr("row");
-					this.table=$("#usertable").DataTable();
-					var row=this.table.rows(rowIndex).data()[0];
-					this.stu=row;
+			var tea=null;
+			function appointTea(a){
+				this.rowIndex=$(a).attr("row");
+				this.table=$("#usertable").DataTable();
+				this.stu=this.table.rows(rowIndex).data()[0];
+				
 					/* alert(rowIndex+"  "+jsonRow.SId); */
-					window.open("detailedInfo.jsp?type=0","table","height=300,width=400,top="+
-					(window.screen.height-30-600)/2+",left="+(window.screen.width-10-400)/2);
-					var type="${requestScope.type}";
-					var url=null;
-					if(type==0){
-						url="detailedStuInfo.action";
-					}else if(type==1){
-						url="detailedTeaInfo.action";
-					}
-				}
+				window.open("detailedInfo.jsp?type=0","table","height=300,width=400,top="+
+				(window.screen.height-30-600)/2+",left="+(window.screen.width-10-400)/2);
+			}
+			
 		</script>
 		<script type="text/javascript">
 			function reloadTable(data){

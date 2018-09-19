@@ -4,6 +4,7 @@ import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.sql.Timestamp;
 import java.util.Date;
@@ -18,12 +19,13 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.ModelDriven;
 import com.pratice.entity.Admin;
 import com.pratice.entity.Message;
 import com.pratice.service.MessageService;
 @Controller
 @Scope("prototype")
-public class MessageAction extends ActionSupport {
+public class MessageAction extends ActionSupport implements ModelDriven<Message>{
 	private Integer page;
 	private String id;
 	private Message message;
@@ -61,7 +63,6 @@ public class MessageAction extends ActionSupport {
 	}
 	
 	public String pushMsg() throws Exception {
-		System.out.println(message.getContent());
 		HttpSession session = ServletActionContext.getRequest().getSession();
 		Admin admin = (Admin) session.getAttribute("user");
 		message.setAdmin(admin);
@@ -87,6 +88,40 @@ public class MessageAction extends ActionSupport {
 		
 		message.setDate(new Date());
 		messageService.saveEntity(message);
+		return SUCCESS;
+	}
+	public String deleteMessage() {
+		messageService.deleteEntity(message);
+		return SUCCESS;
+	}
+	public String getEditForm() {
+		HttpServletRequest request = ServletActionContext.getRequest();
+		request.setAttribute("message", message);
+		return SUCCESS;
+	}
+	public String updateMessage() throws Exception {
+		message.setFile(null);
+		if(upload!=null) {
+			String root = ServletActionContext.getServletContext().getRealPath("/files");
+			FileInputStream is = new FileInputStream(upload);
+			
+			File file = new File(root);
+			if(!file.exists())
+				file.mkdirs();
+			FileOutputStream os = new FileOutputStream(new File(file, uploadFileName));
+			BufferedInputStream bis = new BufferedInputStream(is);
+			BufferedOutputStream bos = new BufferedOutputStream(os);
+			byte[] b = new byte[500];
+			int length=0;
+			while((length=bis.read(b, 0, b.length))!=-1) {
+				os.write(b);
+			}
+			is.close();
+			os.close();
+			message.setFile(uploadFileName);
+		}
+		message.setDate(new Date());
+		messageService.updateEntity(message);
 		return SUCCESS;
 	}
 	public Integer getPage() {
@@ -142,6 +177,15 @@ public class MessageAction extends ActionSupport {
 
 	public void setMsgType(Integer msgType) {
 		this.msgType = msgType;
+	}
+
+	@Override
+	public Message getModel() {
+		// TODO Auto-generated method stub
+		if(id!=null) {
+			message=messageService.getEntityById(id);
+		}
+		return null;
 	}
 	
 	
