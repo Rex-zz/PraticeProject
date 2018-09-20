@@ -83,8 +83,8 @@ public class ExcelTool {
 		sheet.addCell(new Label(5, 0, "学院"));
 		sheet.addCell(new Label(6, 0, "班级"));
 		sheet.addCell(new Label(7, 0, "指导老师"));
-		for (int i = 0; i < stu.size(); i++) {
-			Student s = stu.get(i);
+		for (int i = 1; i < stu.size() + 1; i++) {
+			Student s = stu.get(i - 1);
 			sheet.addCell(new Label(0, i, s.getSId()));
 			sheet.addCell(new Label(1, i, s.getName()));
 			sheet.addCell(new Label(2, i, s.getSex()));
@@ -114,8 +114,8 @@ public class ExcelTool {
 		sheet.addCell(new Label(3, 0, "ר专业"));
 		sheet.addCell(new Label(4, 0, "ָ指导学生数"));
 		sheet.addCell(new Label(5, 0, "密码"));
-		for (int i = 0; i < tea.size(); i++) {
-			Teacher t = tea.get(i);
+		for (int i = 1; i < tea.size() + 1; i++) {
+			Teacher t = tea.get(i - 1);
 			sheet.addCell(new Label(0, i, t.getTId()));
 			sheet.addCell(new Label(1, i, t.getTName()));
 			sheet.addCell(new Label(2, i, t.getTTel()));

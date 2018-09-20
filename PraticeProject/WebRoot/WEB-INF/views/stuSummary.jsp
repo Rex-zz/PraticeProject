@@ -99,7 +99,7 @@ DD_belatedPNG.fix('.flash_bar,#tit_fc1,#tit_fc2,#tit_fc3,#tit_fc4,#flashLine,.pn
 							<ul>
 								<!--#begineditable name="网站导航-左侧二级" action="" layout="" tpltype="" contype="" clone="" viewid="136230" contentviewid="" tagname="网站导航-左侧二级"-->
 								<li>
-									<a href="#" title="实习见习">查看通知</a>
+									<a href="index.action" title="实习见习">查看通知</a>
 								</li>
 								<s:if test="#session.identity==2">
 									<li><a href="#" >发布通知</a></li>

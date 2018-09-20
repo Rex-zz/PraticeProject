@@ -66,7 +66,7 @@ public class StudentAction extends ActionSupport implements RequestAware,
 	@Autowired
 	private StuSummaryService stusummaryService;
 
-	public String toIntent(){
+	public String toIntent() {
 		HttpServletRequest request = (HttpServletRequest) ActionContext
 				.getContext().get(StrutsStatics.HTTP_REQUEST);
 		HttpSession se = request.getSession();
@@ -167,14 +167,16 @@ public class StudentAction extends ActionSupport implements RequestAware,
 		Student st = (Student) se.getAttribute("user");
 		List<StuDiary> diaries = stuDiaryService.getEntityList(st.getSId());
 		SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
-		String starttime=sf.format(stuPracticeService.getEntityById(st.getSId()).getSStartdate());
-		String endtime=sf.format(stuPracticeService.getEntityById(st.getSId()).getSEnddate());
+		String starttime = sf.format(stuPracticeService.getEntityById(
+				st.getSId()).getSStartdate());
+		String endtime = sf.format(stuPracticeService
+				.getEntityById(st.getSId()).getSEnddate());
 		String now = sf.format(new Date()).substring(0, 10);
-		if(now.compareTo(starttime)>=0&&now.compareTo(endtime)<=0)
+		if (now.compareTo(starttime) >= 0 && now.compareTo(endtime) <= 0)
 			session.put("DiaryAdded", 0);
 		else
 			session.put("DiaryAdded", 1);
-		if (diaries.size()>0) {
+		if (diaries.size() > 0) {
 			session.put("diaries", diaries);
 			int pagenum = 7;
 			if (diaryPage < 1)
@@ -255,12 +257,32 @@ public class StudentAction extends ActionSupport implements RequestAware,
 	}
 
 	public String stuReport() {
+		HttpServletRequest request = (HttpServletRequest) ActionContext
+				.getContext().get(StrutsStatics.HTTP_REQUEST);
+		HttpSession se = request.getSession();
+		Student st = (Student) se.getAttribute("user");
+		st.setSId(report.getId());
+		st.setName(report.getName());
+		st.setMajor(report.getMajor());
+		st.setClass_(report.getClass_());
+		studentService.updateEntity(st);
 		stuReportService.saveEntity(report);
+		session.put("report", report);
 		return SUCCESS;
 	}
 
 	public String stuSummary() {
+		HttpServletRequest request = (HttpServletRequest) ActionContext
+				.getContext().get(StrutsStatics.HTTP_REQUEST);
+		HttpSession se = request.getSession();
+		Student st = (Student) se.getAttribute("user");
+		st.setSId(summary.getId());
+		st.setName(summary.getName());
+		st.setMajor(summary.getMajor());
+		st.setClass_(summary.getClass_());
+		studentService.updateEntity(st);
 		stusummaryService.saveEntity(summary);
+		session.put("summary", summary);
 		return SUCCESS;
 	}
 
